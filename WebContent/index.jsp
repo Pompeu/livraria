@@ -1,9 +1,2 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
-<head>
-<title>Tag Example</title>
-</head>
-<body>
-	<c:redirect url="crtl.do?crtl=EstanteCrtl" />
-</body>
-</html>
+<c:redirect url="crtl.do?crtl=EstanteCrtl" />
