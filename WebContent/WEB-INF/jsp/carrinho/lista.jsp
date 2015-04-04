@@ -9,25 +9,34 @@
 </head>
 <body>
 	<c:import url="../includes/header.jsp"></c:import>
-	<a href="<c:url value='crtl.do?crtl=EstanteCrtl'/>">Comprar Mais</a>
-	<div>
-		<div>
+	<div class="container">
+		<a href="<c:url value='crtl.do?crtl=EstanteCrtl'/>">Comprar Mais</a>
+	
+	<div class="bs-example">
 			<h1>Carrinho Compras</h1>
-			<table>
+			 <table class="table">
 				<tr>
 					<th>Titulo</th>
 					<th>Valor</th>
 					<th>Qtd</th>
-					<th>remove</th>
+					<th>Remover</th>
 				</tr>
 				<c:forEach items="${sessionScope.carrinho.livros}" var="livro">
 					<tr>
 						<td>${livro.titulo}</td>
 						<td><fmt:setLocale value="pt_BR" /> <fmt:formatNumber
 								value="${livro.preco}" pattern="R$ #,##0.00" /></td>
-						<td><input type="text" value="1"></td>
-						<td><a
-							href='<c:url value='crtl.do?crtl=CarrinhoCrtl&item=${livro.titulo}'/>'>Remove</a></td>
+						<td>
+							<form class="form-group" action="">								
+								<div class="col-sm-4 col-xs-4">
+									<input class="form-control" type="text"  value="1">
+								</div>
+							</form>
+						</td>
+						<td>
+							<a class="btn btn-danger"
+								href='<c:url value='crtl.do?crtl=CarrinhoCrtl&item=${livro.titulo}'/>'>Remove</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -8,8 +8,7 @@
 </head>
 <body>
 	<c:import url="../includes/header.jsp"></c:import>
-	<form action="/livaria/service.do" method="post">
-	
+	<form action="<c:url value='/service.do'/>" method="post">
 		<input type="hidden" name="service" value="CriarLivro">
 		<input type="hidden" name="id" value="${livro.id}">
 		<div>
