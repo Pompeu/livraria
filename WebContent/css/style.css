@@ -1,0 +1,16 @@
+.main {
+	width: 900px;
+	background-color: red;
+	margin: 0 auto;
+	padding: 20px auto;
+}
+
+.main-livro {
+	width: 250px;
+	height:250px;
+	background-color: gray;
+	margin: 0 auto;
+	padding-left : 20px;
+	float: left;
+	border-color: black;
+}
