@@ -10,16 +10,24 @@ import javax.servlet.http.HttpSession;
 import com.herokuapp.livraria.logica.Logica;
 import com.herokuapp.livraria.models.Carrinho;
 import com.herokuapp.livraria.models.EstadoCarrinho;
+import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
 import com.herokuapp.livraria.models.User;
+import com.herokuapp.livraria.models.dao.EnderecoImpl;
+import com.herokuapp.livraria.models.dao.EndrecoDAO;
 
 public class CarrinhoCrtl implements Logica {
 
 	private Carrinho carrinho;
 	private HttpSession session;
 	private Set<Livro> livros;
-	private User user;
+	private User usuLogado;
+	private EndrecoDAO endrecodao;
 	private EstadoCarrinho estadoDoCarrinho;
+
+	public CarrinhoCrtl() {
+		endrecodao = new EnderecoImpl(JdbcFactory.getInstance().getConnection());
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -27,24 +35,26 @@ public class CarrinhoCrtl implements Logica {
 			throws Exception {
 
 		String livroAremover = req.getParameter("item");
-		String recalcular = req.getParameter("recalcular");
 
 		session = req.getSession();
 
 		livros = (Set<Livro>) session.getAttribute("livros");
-		user = (User) session.getAttribute("usuLogado");
+		usuLogado = (User) session.getAttribute("usuLogado");
 
 		if (livroAremover != null) {
 			livros = livros.stream()
 					.filter(livro -> !livro.getTitulo().equals(livroAremover))
 					.collect(Collectors.toSet());
 		}
-		if (recalcular != null && recalcular.equals("1")) {
-			livros.forEach(System.out::println);
+
+		if (usuLogado != null) {
+			req.setAttribute("enderecos",
+					endrecodao.getEnderecoByUser(usuLogado));
 		}
+
 		session.setAttribute("livros", livros);
 
-		carrinho = new Carrinho(livros, user, estadoDoCarrinho);
+		carrinho = new Carrinho(livros, usuLogado, estadoDoCarrinho);
 
 		session.setAttribute("carrinho", carrinho);
 

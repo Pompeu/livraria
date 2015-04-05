@@ -10,7 +10,11 @@ public enum Estados {
 		for (Estados state : values()) {
 			names[index++] = state.name();
 		}
-
 		return names;
+	}
+	
+	public  static Estados getName(String estado){
+		return Estados.valueOf(estado);
+		
 	}
 }

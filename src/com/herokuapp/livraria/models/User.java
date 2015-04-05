@@ -1,5 +1,7 @@
 package com.herokuapp.livraria.models;
 
+import java.util.List;
+
 public class User {
 
 	private Integer id;
@@ -8,11 +10,12 @@ public class User {
 	private String cpf;
 	private String email;
 	private String password;
+	private List<Endereco> enderecos;
 
 	User() {
 	}
 
-	User(Integer id, Nivel NIVEL, String nome, String cpf, String email,
+	public User(Integer id, Nivel NIVEL, String nome, String cpf, String email,
 			String password) {
 		this.id = id;
 		this.NIVEL = NIVEL;
@@ -32,7 +35,7 @@ public class User {
 	}
 
 	public User(String email) {
-		this.email = email;		
+		this.email = email;
 	}
 
 	public void setId(Integer id) {
@@ -63,6 +66,10 @@ public class User {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
 	@Override

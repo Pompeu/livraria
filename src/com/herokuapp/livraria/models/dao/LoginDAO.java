@@ -6,4 +6,9 @@ public interface LoginDAO {
 
 	User logar(User user);
 
+	String recPassoword(String email, String newpass);
+
+	boolean verificarNivel(String email);
+	
+
 }

@@ -110,12 +110,14 @@ public class UserImpl implements DAO<User> {
 			if (rs.next()) {
 				switch (rs.getString("nivel")) {
 				case "ADMIN":
-					user = new User(Nivel.ADMIN, rs.getString("nome"),
+					user = new User(Integer.valueOf(rs.getString("id")),
+							Nivel.ADMIN, rs.getString("nome"),
 							rs.getString("cpf"), rs.getString("email"),
 							rs.getString("password"));
 					break;
 				case "CLIENTE":
-					user = new User(Nivel.CLIENTE, rs.getString("nome"),
+					user = new User(Integer.valueOf(rs.getString("id")),
+							Nivel.CLIENTE, rs.getString("nome"),
 							rs.getString("cpf"), rs.getString("email"),
 							rs.getString("password"));
 					break;
@@ -128,6 +130,7 @@ public class UserImpl implements DAO<User> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 		return user;
 	}
 

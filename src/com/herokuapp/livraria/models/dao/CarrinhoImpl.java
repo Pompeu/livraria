@@ -32,7 +32,7 @@ public class CarrinhoImpl implements CarrinhoDAO {
 			stm.setInt(5, carrinho.getQtd());
 
 			stm.execute();
-			stm.close();
+			
 
 			ResultSet rs = stm.getGeneratedKeys();
 			if (rs.next()) {
@@ -42,7 +42,8 @@ public class CarrinhoImpl implements CarrinhoDAO {
 			new Thread(() -> carrinho.getLivros().forEach(
 					livro -> livroCarrinho(carrinho.getId(), livro.getId())))
 					.start();
-
+			
+			stm.close();
 			return carrinho;
 	
 		} catch (SQLException e) {

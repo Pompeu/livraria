@@ -14,9 +14,6 @@
 		<c:redirect url="crtl.do?crtl=EstanteCrtl" />
 	</c:if>
 	<div class="container">
-		<center>
-			<a href="<c:url value='crtl.do?crtl=EstanteCrtl'/>">Comprar Mais</a>
-		</center>
 		<div class="bs-example">
 			<h1>Carrinho Compras</h1>
 			<table class="table">
@@ -41,11 +38,33 @@
 				</c:forEach>
 			</table>
 			<c:if test="${not empty sessionScope.carrinho.livros}">
-				<span>Total </span>
+				<span>Total da Compra </span>
 				<fmt:setLocale value="pt_BR" />
 				<fmt:formatNumber value="${sessionScope.carrinho.total}"
 					pattern="R$ #,##0.00" />
-				<a class="btn btn-success" href="#">Finalizar Comprar</a>
+				<c:if test="${ empty sessionScope.usuLogado}">
+					<a href="<c:url value='/service.do?service=FormLogar'/>"> <i
+							class="glyphicon glyphicon-ok"></i> Logar
+					</a>
+				</c:if>
+				<div>
+					<a class="btn btn-success" href="<c:url value='crtl.do?crtl=EstanteCrtl'/>">Continuar Comprando</a>
+				</div>
+			</c:if>
+			<a class="btn btn-info" href='<c:url value='service.do?service=FormEndereco' />'> Adicionar Endereco</a>
+			<c:if test="${not empty enderecos}">
+				<div>
+					<form action='<c:url value="service.do"/>' method="post">
+					<input type="hidden" name="service" value="CarrinhoDetails">
+					<label> Endereco Para Entrega </label> 
+					<select name=endereco>
+					<c:forEach items="${enderecos}" var="e">
+						<option value="${e}">${e.logradouro} em ${e.cidade}</option>
+					</c:forEach> 
+					</select>
+					<button class="btn btn-success"> Confirmar</button>
+					</form>
+				</div>
 			</c:if>
 		</div>
 	</div>

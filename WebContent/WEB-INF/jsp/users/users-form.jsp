@@ -57,8 +57,6 @@
 							</div>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">
 								Cadastrar</button>
-							<a class="btn btn-lg btn-primary btn-block" href='<c:url value="service.do?service=RecPassWord"/>'>
-								Recuperar Senha</a>
 							<c:if test="${requestScope.result != null}">
 								<span class="text-danger">${requestScope.result}</span>
 							</c:if>
@@ -68,33 +66,5 @@
 			</div>
 		</div>
 	</div>
-<%-- 	<form action="" method="post">
-		<div>
-			<input type="hidden" name="service" value="CriarUser">
-			<input type="hidden" name="id" value="${user.id}"> <label>
-				Nome</label> <input type="text" name="nome" value="${user.nome}">
-		</div>
-		<div>
-			<label>Cpf</label> <input type="text" name="cpf"
-				value="${user.cpf}">
-		</div>
-		<div>
-			<label>Email</label> <input type="email" name="email"
-				value="${user.email}">
-		</div>
-		<div>
-			<label>Passoword</label> <input type="password" name="password"
-				value="${user.password}">
-		</div>
-		<div>
-			<c:if test="${sessionScope.usuLogado.nivel eq 'ADMIN'}">
-				<label>ADMIN</label>
-				<input type="radio" name="nivel" value="ADMIN">
-			</c:if>
-			 <label>CLIENTE</label> <input
-				type="radio" name="nivel" value="CLIENTE" checked="checked">
-		</div>
-		<button type="submit">Salvar</button>
-	</form> --%>
 </body>
 </html>

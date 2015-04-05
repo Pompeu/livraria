@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Fechar Venda</title>
+<title>Detalhes do Endereco</title>
 </head>
 <body>
-
+	${endereco}
 </body>
 </html>

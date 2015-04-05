@@ -30,6 +30,8 @@
 							</div>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">
 								Logar</button>
+							<a class="btn btn-lg btn-primary btn-block" href='<c:url value="service.do?service=FormRecPassword"/>'>
+								Recuperar Senha</a>	
 							<c:if test="${requestScope.result != null}">
 								<span class="text-danger">${requestScope.result}</span>
 							</c:if>

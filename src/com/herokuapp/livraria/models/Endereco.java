@@ -14,8 +14,8 @@ public class Endereco {
 	Endereco() {
 	}
 
-	public Endereco(User user, Estados estado, String cidade, String logradouro,
-			String cep, String numero, String complemento) {
+	public Endereco(User user, Estados estado, String cidade,
+			String logradouro, String cep, String numero, String complemento) {
 		this.user = user;
 		this.estado = estado;
 		this.cidade = cidade;
@@ -29,6 +29,17 @@ public class Endereco {
 			String logradouro, String cep, String numero, String complemento) {
 		this.id = id;
 		this.user = user;
+		this.estado = estado;
+		this.cidade = cidade;
+		this.logradouro = logradouro;
+		this.cep = cep;
+		this.numero = numero;
+		this.complemento = complemento;
+	}
+
+	public Endereco(Integer id, Estados estado, String cidade,
+			String logradouro, String cep, String numero, String complemento) {
+		this.id = id;
 		this.estado = estado;
 		this.cidade = cidade;
 		this.logradouro = logradouro;
@@ -106,9 +117,10 @@ public class Endereco {
 
 	@Override
 	public String toString() {
-		return "Endereco [user=" + user + ", estado=" + estado + ", cidade="
-				+ cidade + ", logradouro=" + logradouro + ", cep=" + cep
-				+ ", numero=" + numero + ", complemento=" + complemento + "]";
+		return "Endereco [id=" + id + ", user=" + user + ", estado=" + estado
+				+ ", cidade=" + cidade + ", logradouro=" + logradouro
+				+ ", cep=" + cep + ", numero=" + numero + ", complemento="
+				+ complemento + "]";
 	}
 
 }

@@ -39,6 +39,6 @@ public class LivrosByTituloTest {
 		assertTrue(tituloAutoComplete.size() > 0);
 		assertTrue(tituloAutoComplete.get(0) instanceof String);
 
-		}
+	}
 
 }

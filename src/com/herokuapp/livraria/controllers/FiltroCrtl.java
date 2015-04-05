@@ -15,14 +15,6 @@ import com.herokuapp.livraria.models.Console;
 @WebFilter("/*")
 public class FiltroCrtl implements Filter {
 
-	public FiltroCrtl() {
-
-	}
-
-	public void destroy() {
-
-	}
-
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		long tempoInicial = System.currentTimeMillis();
@@ -54,6 +46,10 @@ public class FiltroCrtl implements Filter {
 		default:
 			return uri;
 		}
+	}
+
+	public void destroy() {
+
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {

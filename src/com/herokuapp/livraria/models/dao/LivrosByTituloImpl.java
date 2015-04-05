@@ -45,7 +45,7 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 	@Override
 	public List<String> getTituloAutoComplete(String input) {
 		
-		String sql = "select * from livros  where titulo  ilike ? Limit 20";
+		String sql = "select titulo from livros  where titulo  ilike ? Limit 20";
 		
 		List<String> livros = new ArrayList<>();
 

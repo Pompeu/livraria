@@ -1,6 +1,5 @@
 package com.herokuapp.livraria.controllers;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,7 +24,7 @@ public class LogarCrtl implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-
+		
 		session = req.getSession();
 		session.setMaxInactiveInterval(30 * 60);
 		String email = req.getParameter("email");
@@ -36,14 +35,12 @@ public class LogarCrtl implements Logica {
 		User usulogado = logindao.logar(user);		
 
 		if (usulogado != null && BCrypt.checkpw(password, usulogado.getPassword())) {
-			session.setAttribute("usuLogado", usulogado);
-			Cookie userName = new Cookie("user", usulogado.getEmail());
-	        userName.setMaxAge(30*60);
-	        res.addCookie(userName);			
+			session.setAttribute("usuLogado", usulogado);				
 		} else {
 			req.setAttribute("result", "login ou senha invalidos");
 			return "/WEB-INF/jsp/logar/logar-form.jsp";
 		}
+		
 		return "crtl.do?crtl=EstanteCrtl";
 	}
 

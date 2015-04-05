@@ -5,23 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='css/style.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='css/style.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='bower_components/bootstrap/dist/css/bootstrap.min.css'/>">
-<link rel="stylesheet" type="text/css"
-	href="<c:url value='bower_components/bootstrap/dist/css/bootstrap-theme.min.css'/>">
-<script
-	src="<c:url value='bower_components/jquery/dist/jquery.min.js'/>">
-	
-</script>
-<script
-	src="<c:url value='bower_components/bootstrap/dist/js/bootstrap.min.js'/>">
-	
-</script>
-
+<c:import url="../includes/css.jsp"></c:import>
+<c:import url="../includes/javascripts.jsp"></c:import>
 
 <nav class="role="
 	navigation" class="navbar navbar-default navbar-fixed-top">
@@ -36,7 +21,7 @@
 			<li><a href="<c:url value='/service.do?service=FormUser'/>">
 					<i class="glyphicon glyphicon-thumbs-up"></i> Cadastrar
 			</a></li>
-			<li><c:if test="${sessionScope.usuLogado == null}">
+			<li><c:if test="${empty sessionScope.usuLogado}">
 					<a href="<c:url value='/service.do?service=FormLogar'/>"> <i
 						class="glyphicon glyphicon-ok"></i> Logar
 					</a>
@@ -65,7 +50,7 @@
 					<a href='<c:url value="crtl.do?crtl=CarrinhoCrtl"/>'><i
 						class="glyphicon glyphicon-shopping-cart"></i> Carrinho</a>
 				</c:if></li>
-			<li><c:if test="${sessionScope.usuLogado != null}">
+			<li><c:if test="${not empty sessionScope.usuLogado}">
 					<a href="<c:url value='/crtl.do?crtl=LogoutCrtl'/>"> Ola Sr <span>${sessionScope.usuLogado.nome}</span>
 						<i class="glyphicon glyphicon-off"></i> Sair
 					</a>
