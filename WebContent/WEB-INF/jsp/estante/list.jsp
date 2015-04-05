@@ -22,8 +22,18 @@
 					<fmt:setLocale value="pt_BR" />
 					<fmt:formatNumber value="${livro.preco}" pattern="R$ #,##0.00" />
 				</h3>
-				<a
-					href='<c:url value="service.do?service=AddLivro&id=${livro.id}"/>'><strong>Comprar</strong></a>
+				<div>
+					<form class="form-inline" action='<c:url value="service.do"/>' method="post">
+							<input type="hidden" name="service" value="AddLivro">
+							<input type="hidden" name="id" value="${livro.id}">
+							<div class="form-group">					
+								<input class="form-control" type="text" value="" name="qtd"  placeholder="Quantidade" required>
+							</div>
+							<div class="form-group">
+								<button class="btn btn-primary" type="submit"> Comprar</button>
+							</div>					
+					</form>
+				</div>
 			</div>
 
 		</c:forEach>

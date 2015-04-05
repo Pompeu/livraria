@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,12 +10,16 @@
 </head>
 <body>
 	<c:import url="../includes/header.jsp"></c:import>
+	<c:if test='${fn:length(sessionScope.carrinho.livros) < 1}'>
+		<c:redirect url="crtl.do?crtl=EstanteCrtl" />
+	</c:if>
 	<div class="container">
-		<a href="<c:url value='crtl.do?crtl=EstanteCrtl'/>">Comprar Mais</a>
-	
-	<div class="bs-example">
+		<center>
+			<a href="<c:url value='crtl.do?crtl=EstanteCrtl'/>">Comprar Mais</a>
+		</center>
+		<div class="bs-example">
 			<h1>Carrinho Compras</h1>
-			 <table class="table">
+			<table class="table">
 				<tr>
 					<th>Titulo</th>
 					<th>Valor</th>
@@ -27,15 +32,10 @@
 						<td><fmt:setLocale value="pt_BR" /> <fmt:formatNumber
 								value="${livro.preco}" pattern="R$ #,##0.00" /></td>
 						<td>
-							<form class="form-group" action="">								
-								<div class="col-sm-4 col-xs-4">
-									<input class="form-control" type="text"  value="1">
-								</div>
-							</form>
+							<strong>${livro.qtd}</strong>
 						</td>
-						<td>
-							<a class="btn btn-danger"
-								href='<c:url value='crtl.do?crtl=CarrinhoCrtl&item=${livro.titulo}'/>'>Remove</a>
+						<td><a class="btn btn-danger"
+							href='<c:url value='crtl.do?crtl=CarrinhoCrtl&item=${livro.titulo}'/>'>Remove</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -45,10 +45,10 @@
 				<fmt:setLocale value="pt_BR" />
 				<fmt:formatNumber value="${sessionScope.carrinho.total}"
 					pattern="R$ #,##0.00" />
-				<a href="#">Recalcular</a>
-				<a href="#">Finalizar Comprar</a>
+				<a class="btn btn-success" href="#">Finalizar Comprar</a>
 			</c:if>
 		</div>
 	</div>
+
 </body>
 </html>

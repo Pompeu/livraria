@@ -18,18 +18,18 @@ public class Carrinho {
 	Carrinho() {
 	}
 
-	public Carrinho(Set<Livro> livros, User user, EstadoCarrinho estadoDoCarrinho) {
+	public Carrinho(Set<Livro> livros, User user,
+			EstadoCarrinho estadoDoCarrinho) {
 		this.livros = livros;
 		this.user = user;
 		this.estadoDoCarrinho = estadoDoCarrinho;
 		this.data = LocalDateTime.now();
 	}
 
-	public Carrinho(Set<Livro> livros, BigDecimal total, int qtd, User user,
+	public Carrinho(Set<Livro> livros, BigDecimal total, User user,
 			EstadoCarrinho estadoDoCarrinho, LocalDateTime data) {
 		this.livros = livros;
 		this.total = total;
-		this.qtd = qtd;
 		this.user = user;
 		this.estadoDoCarrinho = estadoDoCarrinho;
 		this.data = data;
@@ -71,12 +71,13 @@ public class Carrinho {
 	private BigDecimal calcTotal() {
 		double sum = 0;
 		if (livros != null) {
-			sum = livros.stream().mapToDouble(l -> l.getPreco().doubleValue())
-					.sum();
+			sum = livros
+					.stream()
+					.mapToDouble(
+							livro -> livro.getPreco().doubleValue()
+									* livro.getQtd()).sum();
 		}
-
 		return new BigDecimal(sum);
-
 	}
 
 	public int calcQtd() {

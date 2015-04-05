@@ -24,6 +24,6 @@
 		<a
 			href="<c:url value="/service.do?service=DeletarLivro&id=${livro.id}"/>">Deletar</a>
 	</c:if>
-
+	
 </body>
 </html>

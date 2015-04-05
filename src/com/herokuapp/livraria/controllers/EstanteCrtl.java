@@ -5,13 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.herokuapp.livraria.logica.Logica;
 import com.herokuapp.livraria.models.JdbcFactory;
-import com.herokuapp.livraria.models.Livro;
-import com.herokuapp.livraria.models.dao.DAO;
+import com.herokuapp.livraria.models.dao.LivroDAO;
 import com.herokuapp.livraria.models.dao.LivroImpl;
 
 public class EstanteCrtl implements Logica {
 
-	private DAO<Livro> livrodao;
+	private LivroDAO livrodao;
 
 	public EstanteCrtl() {
 		livrodao = new LivroImpl(JdbcFactory.getInstance().getConnection());
@@ -20,9 +19,14 @@ public class EstanteCrtl implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		
-		req.setAttribute("livros", livrodao.retriveAll());
-		
+		String parameter = req.getParameter("pagina");
+
+		if (parameter != null) {
+			req.setAttribute("livros",
+					livrodao.retriveAll(Integer.valueOf(parameter)));
+		} else {
+			req.setAttribute("livros", livrodao.retriveAll());
+		}
 		return "/WEB-INF/jsp/estante/list.jsp";
 
 	}

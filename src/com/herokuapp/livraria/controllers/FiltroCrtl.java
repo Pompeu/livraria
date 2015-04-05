@@ -10,7 +10,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-
 import com.herokuapp.livraria.models.Console;
 
 @WebFilter("/*")
@@ -26,10 +25,9 @@ public class FiltroCrtl implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-
 		long tempoInicial = System.currentTimeMillis();
 
-		chain.doFilter(request, response);	
+		chain.doFilter(request, response);
 
 		long tempoFinal = System.currentTimeMillis();
 
@@ -43,7 +41,7 @@ public class FiltroCrtl implements Filter {
 
 		Console.log("Tempo da requisicao de " + uri + "?" + takeLogica(uri)
 				+ "=" + parametros + " demorou : "
-				+ (tempoFinal - tempoInicial)+"(ms)");
+				+ (tempoFinal - tempoInicial) + "(ms)");
 
 	}
 

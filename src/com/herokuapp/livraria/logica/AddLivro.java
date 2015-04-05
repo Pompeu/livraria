@@ -9,12 +9,12 @@ import javax.servlet.http.HttpSession;
 
 import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
-import com.herokuapp.livraria.models.dao.DAO;
+import com.herokuapp.livraria.models.dao.LivroDAO;
 import com.herokuapp.livraria.models.dao.LivroImpl;
 
 public class AddLivro implements Logica {
 
-	private DAO<Livro> livrodao;
+	private LivroDAO livrodao;	
 	private Set<Livro> livros = new HashSet<>();
 	private HttpSession session;
 
@@ -32,6 +32,10 @@ public class AddLivro implements Logica {
 
 		Livro livro = livrodao.retriveById(Integer.valueOf(req
 				.getParameter("id")));
+		
+		livro.setQtd(Integer.valueOf(req
+				.getParameter("qtd")));
+		
 		livros.add(livro);
 
 		session.setAttribute("livros", livros);

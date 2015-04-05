@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
-import com.herokuapp.livraria.models.dao.DAO;
+import com.herokuapp.livraria.models.dao.LivroDAO;
 import com.herokuapp.livraria.models.dao.LivroImpl;
 
 public class CriarLivro implements Logica {
 
-	private DAO<Livro> livrodao;
+	private LivroDAO livrodao;
 	private Livro livro;
 
 	public CriarLivro() {

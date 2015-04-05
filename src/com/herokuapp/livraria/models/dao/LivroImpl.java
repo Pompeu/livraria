@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.herokuapp.livraria.models.Livro;
 
-public class LivroImpl implements DAO<Livro> {
+public class LivroImpl implements LivroDAO {
 
 	private Connection con;
 	private PreparedStatement stm;
@@ -91,7 +91,7 @@ public class LivroImpl implements DAO<Livro> {
 			if (retriveById(livro.getId()) == null) {
 				return true;
 			}
-
+			stm.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -109,11 +109,11 @@ public class LivroImpl implements DAO<Livro> {
 			ResultSet rs = stm.executeQuery();
 			if (rs.next()) {
 				livro = new Livro(rs.getInt("id"), rs.getString("titulo"),
-						rs.getString("autor"), rs.getString("category"), rs
-						.getString("isbn"), rs.getInt("qtd"), rs
-						.getBigDecimal("preco"));
+						rs.getString("autor"), rs.getString("category"),
+						rs.getString("isbn"), rs.getInt("qtd"),
+						rs.getBigDecimal("preco"));
 			}
-
+			stm.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,11 +124,12 @@ public class LivroImpl implements DAO<Livro> {
 	@Override
 	public List<Livro> retriveAll() {
 
-		String sql = "select * from livros";
+		String sql = "select * from livros Limit 6";
 		List<Livro> livros = new ArrayList<>();
 
 		try {
 			stm = con.prepareStatement(sql);
+
 			ResultSet rs = stm.executeQuery();
 
 			while (rs.next()) {
@@ -137,7 +138,30 @@ public class LivroImpl implements DAO<Livro> {
 								.getString("isbn"), rs.getInt("qtd"), rs
 								.getBigDecimal("preco")));
 			}
+			stm.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return livros;
+	}
 
+	public List<Livro> retriveAll(int offset) {
+
+		String sql = "select * from livros Limit 6 offset ?";
+		List<Livro> livros = new ArrayList<>();
+
+		try {
+			stm = con.prepareStatement(sql);
+			stm.setInt(1, offset);
+			ResultSet rs = stm.executeQuery();
+
+			while (rs.next()) {
+				livros.add(new Livro(rs.getInt("id"), rs.getString("titulo"),
+						rs.getString("autor"), rs.getString("category"), rs
+								.getString("isbn"), rs.getInt("qtd"), rs
+								.getBigDecimal("preco")));
+			}
+			stm.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

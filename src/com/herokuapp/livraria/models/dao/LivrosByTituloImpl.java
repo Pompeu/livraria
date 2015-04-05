@@ -21,11 +21,11 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 
 	@Override
 	public List<Livro> retriveLivroByTitulo(String titulo) {
-		String sql = "select * from livros  where titulo  ilike ?";
+		String sql = "select * from livros  where titulo  ilike ? Limit 6";
 		List<Livro> livros = new ArrayList<>();
 		try {
 			stm = con.prepareStatement(sql);
-			stm.setString(1, "%" + titulo + "%");
+			stm.setString(1, "%" + titulo + "%");		
 
 			ResultSet rs = stm.executeQuery();
 

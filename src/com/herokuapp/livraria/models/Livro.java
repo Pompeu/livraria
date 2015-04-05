@@ -72,6 +72,10 @@ public class Livro implements Serializable {
 		return preco.setScale(2, RoundingMode.CEILING);
 	}
 
+	public void setQtd(Integer qtd) {
+		this.qtd = qtd;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,8 +109,9 @@ public class Livro implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Livro [isbn=" + isbn + ", titulo=" + titulo + ", autor="
-				+ autor + ", category=" + category + ", preco=" + preco + "]";
+		return "Livro [titulo=" + titulo + ", autor=" + autor + ", category="
+				+ category + ", isbn=" + isbn + ", qtd=" + qtd + ", preco="
+				+ preco + "]";
 	}
 
 }
