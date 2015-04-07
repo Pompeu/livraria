@@ -9,16 +9,20 @@
 </head>
 <body>
 	<c:import url="../includes/header.jsp"></c:import>
-	<h1>Dados da Compra</h1>	
-	<div> 
-		<h2>Dados do Cliente</h2>
-			${sessionScope.usuLogado.nome}
-			${sessionScope.usuLogado.cpf}
-			
-		<h3>Endereco para Entregar</h3>
-			${endereco.logradouro}
-			${endereco.numero}
-			${endereco.cep}
+	<h1>Dados da Compra</h1>
+	<div>
+		<div>
+			<h2>Dados do Cliente</h2>
+			${sessionScope.usuLogado.nome} ${sessionScope.usuLogado.cpf}
+		</div>
+		<div>
+			<h3>Endereco para Entregar</h3>
+			${endereco.logradouro} ${endereco.numero} ${endereco.cep}
+		</div>
+		<div>
+			<a href="<c:url value="service.do?service=GerarBoleto" />">Gerar
+				Boleto</a>
+		</div>
 	</div>
 </body>
 </html>

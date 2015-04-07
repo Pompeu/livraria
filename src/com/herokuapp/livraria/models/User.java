@@ -12,7 +12,7 @@ public class User {
 	private String password;
 	private List<Endereco> enderecos;
 
-	User() {
+	public User() {
 	}
 
 	public User(Integer id, Nivel NIVEL, String nome, String cpf, String email,

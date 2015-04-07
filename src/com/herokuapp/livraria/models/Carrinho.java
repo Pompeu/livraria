@@ -8,14 +8,14 @@ import java.util.Set;
 public class Carrinho {
 
 	private Integer id;
-	private Set<Livro> livros;
 	private BigDecimal total;
 	private int qtd;
 	private User user;
 	private LocalDateTime data;
 	private EstadoCarrinho estadoDoCarrinho;
+	private Set<Livro> livros;
 
-	Carrinho() {
+	public Carrinho() {
 	}
 
 	public Carrinho(Set<Livro> livros, User user,

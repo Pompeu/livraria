@@ -11,7 +11,7 @@ public class Endereco {
 	private String numero;
 	private String complemento;
 
-	Endereco() {
+	public Endereco() {
 	}
 
 	public Endereco(User user, Estados estado, String cidade,

@@ -20,8 +20,8 @@ public class CarrinhoDetails implements Logica {
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 
-		String id = req.getParameter("endereco").substring(13, 15);
-		
+		String id = req.getParameter("endereco").substring(13, 15).split(",")[0];
+
 		if (id != null) {
 			req.setAttribute("endereco",
 					enderecoDao.getEnderecoById(Integer.valueOf(id)));

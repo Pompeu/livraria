@@ -24,7 +24,6 @@ public class CarrinhoCrtl implements Logica {
 	private User usuLogado;
 	private EndrecoDAO endrecodao;
 	private EstadoCarrinho estadoDoCarrinho;
-
 	public CarrinhoCrtl() {
 		endrecodao = new EnderecoImpl(JdbcFactory.getInstance().getConnection());
 	}
@@ -33,7 +32,7 @@ public class CarrinhoCrtl implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-
+		
 		String livroAremover = req.getParameter("item");
 
 		session = req.getSession();

@@ -1,12 +1,9 @@
 package com.herokuapp.livraria.models;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Livro implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Livro {
 
 	private Integer id;
 	private String titulo;
@@ -16,7 +13,7 @@ public class Livro implements Serializable {
 	private Integer qtd;
 	private BigDecimal preco;
 
-	Livro() {
+	public Livro() {
 	}
 
 	public Livro(Integer id, String titulo, String autor, String category,

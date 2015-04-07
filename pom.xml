@@ -59,5 +59,10 @@
 			<artifactId>jstl-impl</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.caelum.stella</groupId>
+			<artifactId>caelum-stella-boleto</artifactId>
+			<version>2.1.2</version>
+		</dependency>
 	</dependencies>
 </project>

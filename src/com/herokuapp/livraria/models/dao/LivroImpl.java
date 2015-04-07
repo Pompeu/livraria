@@ -78,7 +78,7 @@ public class LivroImpl implements LivroDAO {
 
 	@Override
 	public boolean delete(Livro livro) {
-		String sql = "delete from livros from id=?";
+		String sql = "delete from livros where id=?";
 
 		try {
 			stm = con.prepareStatement(sql);
