@@ -19,7 +19,7 @@
 	<div>
 		<ul class="nav navbar-nav">
 			<li><a href="<c:url value='/service.do?service=FormUser'/>">
-					<i class="glyphicon glyphicon-thumbs-up"></i> Cadastrar
+					<i class="glyphicon glyphicon-thumbs-up"></i> Novo Usuario
 			</a></li>
 			<li><c:if test="${empty sessionScope.usuLogado}">
 					<a href="<c:url value='/service.do?service=FormLogar'/>"> <i
@@ -28,7 +28,7 @@
 				</c:if></li>
 			<li><c:if test="${sessionScope.usuLogado.nivel eq 'ADMIN'}">
 					<a href="<c:url value='/service.do?service=FormLivro'/>"> <i
-						class=""></i> Cadastrar Livros
+						class="glyphicon glyphicon-book"></i> Cadastrar Livros
 					</a>
 				</c:if></li>
 			<li>
@@ -41,7 +41,7 @@
 								class="glyphicon glyphicon-search"></i>
 							</label> <input class="form-control" id="titulo" type="text"
 								name="titulo">
-							<button type="submit" class="btn btn-success">Buscar</button>
+							<button type="submit" class="btn btn-success">Buscar Livros</button>
 						</div>
 					</form>
 				</div>
@@ -50,8 +50,15 @@
 					<a href='<c:url value="crtl.do?crtl=CarrinhoCrtl"/>'><i
 						class="glyphicon glyphicon-shopping-cart"></i> Carrinho</a>
 				</c:if></li>
+			<li><c:if test="${not empty sessionScope.usuLogado}">				 
+				 <a href="<c:url value='/service.do?service=UserDetails'/>">				 
+						<i class="glyphicon glyphicon-user"></i>
+						Ola <span>${sessionScope.usuLogado.nome}</span>
+					</a>
+				</c:if>
+			</li>	
 			<li><c:if test="${not empty sessionScope.usuLogado}">
-					<a href="<c:url value='/crtl.do?crtl=LogoutCrtl'/>"> Ola Sr <span>${sessionScope.usuLogado.nome}</span>
+					<a href="<c:url value='/crtl.do?crtl=LogoutCrtl'/>">
 						<i class="glyphicon glyphicon-off"></i> Sair
 					</a>
 				</c:if></li>

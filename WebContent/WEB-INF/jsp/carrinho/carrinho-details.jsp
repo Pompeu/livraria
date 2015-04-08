@@ -20,7 +20,7 @@
 			${endereco.logradouro} ${endereco.numero} ${endereco.cep}
 		</div>
 		<div>
-			<a href="<c:url value="service.do?service=GerarBoleto" />">Gerar
+			<a href="<c:url value="service.do?service=GerarBoleto&cep=${endereco.cep}" />">Gerar
 				Boleto</a>
 		</div>
 	</div>

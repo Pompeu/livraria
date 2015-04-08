@@ -25,6 +25,7 @@ public class EndrecoDAOTeste {
 	private User user = userDao.retriveById(5);
 
 	private String cidade = "Butiti Alegre";
+	private String bairro = "Centro";
 	private String logradouro = "Rua 24 de Junho";
 	private String cep = "75660000";
 	private String numero = "104";
@@ -34,7 +35,7 @@ public class EndrecoDAOTeste {
 
 	@Before
 	public void before() {
-		endereco = new Endereco(user, Estados.Goias, cidade, logradouro, cep,
+		endereco = new Endereco(user, Estados.Goias, cidade,bairro, logradouro, cep,
 				numero, complemento);
 	}
 

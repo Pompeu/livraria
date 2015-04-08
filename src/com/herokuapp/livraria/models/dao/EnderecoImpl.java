@@ -23,9 +23,9 @@ public class EnderecoImpl implements EndrecoDAO {
 	@Override
 	public Endereco addEndereco(Endereco endereco) {
 
-		String sql = "insert into enderecos (iduser ,cidade , estado ,logradouro ,"
+		String sql = "insert into enderecos (iduser ,cidade ,bairro, estado ,logradouro ,"
 				+ " cep , numero ,complemento )"
-				+ "values (?, ?, ?, ?, ?, ?, ?)";
+				+ "values (?, ?, ?, ?, ?, ?, ? , ?)";
 
 		try {
 
@@ -34,11 +34,12 @@ public class EnderecoImpl implements EndrecoDAO {
 
 			stm.setLong(1, endereco.getUser().getId());
 			stm.setString(2, endereco.getCidade());
-			stm.setString(3, endereco.getEstado().name());
-			stm.setString(4, endereco.getLogradouro());
-			stm.setString(5, endereco.getCep());
-			stm.setString(6, endereco.getNumero());
-			stm.setString(7, endereco.getComplemento());
+			stm.setString(3, endereco.getBairro());
+			stm.setString(4, endereco.getEstado().name());
+			stm.setString(5, endereco.getLogradouro());
+			stm.setString(6, endereco.getCep());
+			stm.setString(7, endereco.getNumero());
+			stm.setString(8, endereco.getComplemento());
 
 			stm.execute();
 
@@ -103,9 +104,10 @@ public class EnderecoImpl implements EndrecoDAO {
 
 				enderecos.add(new Endereco(Integer.valueOf(rs.getInt("id")),
 						user, Estados.getName(rs.getString("estado")), rs
-								.getString("cidade"), rs
-								.getString("logradouro"), rs.getString("cep"),
-						rs.getString("numero"), rs.getString("complemento")));
+								.getString("cidade"), rs.getString("bairro"),
+						rs.getString("logradouro"), rs.getString("cep"), rs
+								.getString("numero"), rs
+								.getString("complemento")));
 			}
 
 			stm.close();
@@ -133,9 +135,9 @@ public class EnderecoImpl implements EndrecoDAO {
 			while (rs.next()) {
 				endereco = new Endereco(Integer.valueOf(rs.getString("id")),
 						Estados.getName(rs.getString("estado")),
-						rs.getString("cidade"), rs.getString("logradouro"),
-						rs.getString("cep"), rs.getString("numero"),
-						rs.getString("complemento"));
+						rs.getString("cidade"), rs.getString("bairro"),
+						rs.getString("logradouro"), rs.getString("cep"),
+						rs.getString("numero"), rs.getString("complemento"));
 			}
 
 			stm.close();

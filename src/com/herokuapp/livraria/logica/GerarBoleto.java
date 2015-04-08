@@ -8,13 +8,21 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.herokuapp.livraria.models.Carrinho;
 import com.herokuapp.livraria.models.Console;
+import com.herokuapp.livraria.models.JdbcFactory;
+import com.herokuapp.livraria.models.User;
+import com.herokuapp.livraria.models.dao.EnderecoImpl;
+import com.herokuapp.livraria.models.dao.EndrecoDAO;
 
 import br.com.caelum.stella.boleto.Banco;
 import br.com.caelum.stella.boleto.Beneficiario;
@@ -27,9 +35,28 @@ import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
 
 public class GerarBoleto implements Logica {
 
+	private EndrecoDAO endDao;
+	private com.herokuapp.livraria.models.Endereco enderecoUser = null;
+
+	public GerarBoleto() {
+		endDao = new EnderecoImpl(JdbcFactory.getInstance().getConnection());
+	}
+
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
+
+		User user = (User) req.getSession().getAttribute("usuLogado");
+		Carrinho carrinho = (Carrinho) req.getSession()
+				.getAttribute("carrinho");
+		String cep = req.getParameter("cep");
+		
+		List<com.herokuapp.livraria.models.Endereco> enderecos = endDao
+				.getEnderecoByUser(user)
+				.stream().filter(e -> e.getCep().equals(cep))
+				.collect(Collectors.toList());
+		
+		enderecoUser = enderecos.get(0);
 
 		Datas datas = Datas
 				.novasDatas()
@@ -40,23 +67,25 @@ public class GerarBoleto implements Logica {
 
 		Endereco enderecoBeneficiario = Endereco.novoEndereco()
 				.comLogradouro("Rua 24 de Junho 104")
-				.comBairro("Buriti Alegre").comCep("75660-000")
+				.comBairro("Centro").comCep("75660-000")
 				.comCidade("Buriti Alegre").comUf("GO");
 
 		Beneficiario beneficiario = Beneficiario.novoBeneficiario()
 				.comNomeBeneficiario("Livraria Pompeulimp").comAgencia("0219")
-				.comDigitoAgencia("4").comCodigoBeneficiario("14910")
-				.comDigitoCodigoBeneficiario("").comNumeroConvenio("1207113")
+				.comDigitoAgencia("4").comCodigoBeneficiario("000014910")
+				.comDigitoCodigoBeneficiario("1").comNumeroConvenio("1207113")
 				.comCarteira("18").comEndereco(enderecoBeneficiario)
 				.comNossoNumero("3300206");
 
 		Endereco enderecoPagador = Endereco.novoEndereco()
-				.comLogradouro("Av dos testes, 111 apto 333")
-				.comBairro("Bairro Teste").comCep("01234-111")
-				.comCidade("São Paulo").comUf("SP");
+				.comLogradouro(enderecoUser.getLogradouro())
+				.comBairro(enderecoUser.getBairro())
+				.comCep(enderecoUser.getCep())
+				.comCidade(enderecoUser.getCidade())
+				.comUf(enderecoUser.getEstado().name());
 
-		Pagador pagador = Pagador.novoPagador().comNome("Fulano da Silva")
-				.comDocumento("111.222.333-12").comEndereco(enderecoPagador);
+		Pagador pagador = Pagador.novoPagador().comNome(user.getNome())
+				.comDocumento(user.getCpf()).comEndereco(enderecoPagador);
 
 		Banco banco = new BancoDoBrasil();
 
@@ -66,17 +95,16 @@ public class GerarBoleto implements Logica {
 				.comDatas(datas)
 				.comBeneficiario(beneficiario)
 				.comPagador(pagador)
-				.comValorBoleto("200.00")
+				.comValorBoleto(carrinho.getTotal())
 				.comNumeroDoDocumento("1234")
-				.comInstrucoes("instrucao 1", "instrucao 2", "instrucao 3",
-						"instrucao 4", "instrucao 5")
-				.comLocaisDePagamento("local 1", "local 2");
+				.comInstrucoes("Pagavel preferencialmente no Banco do brasil",
+						"apos vencimento somente Em Agencias do Banco do Brasil")
+				.comLocaisDePagamento("Banco do Brasil S/A");
 
 		GeradorDeBoleto gerador = new GeradorDeBoleto(boleto);
+			
 
-		gerador.geraPDF("boleto.pdf");
-
-		InputStream is = req.getInputStream();
+		InputStream is = gerador.geraPDFStream();
 		OutputStream os = res.getOutputStream();
 
 		byte[] bPDF = gerador.geraPDF();
@@ -89,32 +117,12 @@ public class GerarBoleto implements Logica {
 		for (int nChunk = is.read(bPDF); nChunk != -1; nChunk = is.read(bPDF)) {
 			os.write(bPDF, 0, nChunk);
 		}
+		
 		os.flush();
 		os.close();
 
-		return null;
+		return "crtl.do?crtl=EstanteCrtl";
 	}
 
-	private void geradorBoleto(HttpServletResponse res, byte[] bPDF)
-			throws ServletException, IOException {
-
-		String pdfFileName = "boleto.pdf";
-
-		File pdfFile = new File(bPDF + pdfFileName);
-
-		res.setContentType("application/pdf");
-		res.addHeader("Content-Disposition", "attachment; filename=" + pdfFile);
-
-		res.setContentLength((int) pdfFile.length());
-
-		FileInputStream fileInputStream = new FileInputStream(pdfFile);
-		OutputStream responseOutputStream = res.getOutputStream();
-
-		int bytes;
-
-		while ((bytes = fileInputStream.read()) != -1) {
-			responseOutputStream.write(bytes);
-		}
-		fileInputStream.close();
-	}
+	
 }

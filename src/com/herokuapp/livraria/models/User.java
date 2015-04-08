@@ -1,8 +1,11 @@
 package com.herokuapp.livraria.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	private Nivel NIVEL;

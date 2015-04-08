@@ -33,19 +33,10 @@ public class CriarUser implements Logica {
 		List<String> params = new ArrayList<>();
 
 		parameterMap.values().forEach(s -> params.add(s[0]));
-		
-		String string =  BCrypt.hashpw(params.get(5),
-				BCrypt.gensalt(12));
-		System.out.println(string);
-		
-		if (params.get(6).equals("ADMIN"))
-			user = new User(Nivel.ADMIN, params.get(2), params.get(3),
-					params.get(4), BCrypt.hashpw(params.get(5),
-							BCrypt.gensalt(12)));
-		else if (params.get(6).equals("CLIENTE"))
-			user = new User(Nivel.CLIENTE, params.get(2), params.get(3),
-					params.get(4), BCrypt.hashpw(params.get(5),
-							BCrypt.gensalt(12)));
+		String password = BCrypt.hashpw(params.get(5), BCrypt.gensalt(12));
+	
+		user = new User(Nivel.valueOf(params.get(6)), params.get(2),
+				params.get(3), params.get(4), password);
 
 		if (!params.get(1).isEmpty())
 			req.setAttribute("user", userdao.update(user));

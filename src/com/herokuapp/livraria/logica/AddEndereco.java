@@ -38,9 +38,9 @@ public class AddEndereco implements Logica {
 
 		parameterMap.values().forEach(e -> params.add(e[0]));
 
-		endereco = new Endereco(user, Estados.getName(params.get(3)),
+		endereco = new Endereco(user, Estados.valueOf(params.get(3)),
 				params.get(2), params.get(4), params.get(5), params.get(6),
-				params.get(7));
+				params.get(7), params.get(8));
 
 		req.setAttribute("endereco", enderecoDao.addEndereco(endereco));
 

@@ -8,39 +8,64 @@
 </head>
 <body>
 	<c:import url="../includes/header.jsp"></c:import>
-
-	<form action="<c:url value='/service.do'/>" method="post">
-		<input type="hidden" name="service" value="AddEndereco">
-		 <input type="hidden" name="id" value="${endereco.id}">
-		<div>
-			<label> Cidade</label> <input type="text" name="cidade"
-				value="${endereco.cidade}">
+	<div class="container" style="margin-top: 40px">
+		<div class="row">
+			<div class="col-sm-6 col-md-4 col-md-offset-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title" style="text-align: center;">Cadastro
+							de Ederecos</h3>
+					</div>
+					<div class="panel-body">
+						<form class="form-signin" action="<c:url value='/service.do'/>"
+							method="post">
+							<input type="hidden" name="service" value="AddEndereco">
+							<input type="hidden" name="id" value="${endereco.id}">
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon"> Cidade</span> <input
+									class="form-control" type="text" name="cidade"
+									value="${endereco.cidade}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon"> Estado</span> <select
+									class="form-control" name=estado>
+									<c:forEach items="${estados}" var="e">
+										<option value="${e}">${e}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Bairro </span> <input
+									class="form-control" type="text" name="bairro"
+									value="${endereco.bairro}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Logradouro </span> <input
+									class="form-control" type="text" name="logradouro"
+									value="${endereco.logradouro}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">CEP </span> <input
+									class="form-control" type="text" name="cep"
+									value="${endereco.cep}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Numero </span> <input
+									class="form-control" type="text" name="numero"
+									value="${endereco.numero}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Complemento </span> <input
+									class="form-control" type="text" name="complemento"
+									value="${endereco.complemento}">
+							</div>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">
+								Salvar</button>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div>
-			<label> Estado</label> 
-			<select name=estado>
-			<c:forEach items="${estados}" var="e">
-				<option value="${e}">${e}</option>
-			</c:forEach> 
-			</select>
-		</div>
-		<div>
-			<label>Logradouro </label> <input type="text" name="logradouro"
-				value="${endereco.logradouro}">
-		</div>
-		<div>
-			<label>CEP </label> <input type="text" name="cep"
-				value="${endereco.cep}">
-		</div>
-		<div>
-			<label>Numero </label> <input type="text" name="numero"
-				value="${endereco.numero}">
-		</div>
-		<div>
-			<label>Complemento </label> <input type="text" name="complemento"
-				value="${endereco.complemento}">
-		</div>
-		<button type="submit">Salvar</button>
-	</form>
+	</div>
 </body>
 </html>

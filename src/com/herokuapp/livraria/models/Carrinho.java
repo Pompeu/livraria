@@ -1,12 +1,15 @@
 package com.herokuapp.livraria.models;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class Carrinho {
+public class Carrinho implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private BigDecimal total;
 	private int qtd;

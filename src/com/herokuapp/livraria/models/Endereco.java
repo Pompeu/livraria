@@ -6,6 +6,7 @@ public class Endereco {
 	private User user;
 	private Estados estado;
 	private String cidade;
+	private String bairro;
 	private String logradouro;
 	private String cep;
 	private String numero;
@@ -14,11 +15,12 @@ public class Endereco {
 	public Endereco() {
 	}
 
-	public Endereco(User user, Estados estado, String cidade,
+	public Endereco(User user, Estados estado, String cidade, String bairro,
 			String logradouro, String cep, String numero, String complemento) {
 		this.user = user;
 		this.estado = estado;
 		this.cidade = cidade;
+		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.cep = cep;
 		this.numero = numero;
@@ -26,22 +28,25 @@ public class Endereco {
 	}
 
 	public Endereco(Integer id, User user, Estados estado, String cidade,
-			String logradouro, String cep, String numero, String complemento) {
+			String bairro, String logradouro, String cep, String numero,
+			String complemento) {
 		this.id = id;
 		this.user = user;
 		this.estado = estado;
 		this.cidade = cidade;
+		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.cep = cep;
 		this.numero = numero;
 		this.complemento = complemento;
 	}
 
-	public Endereco(Integer id, Estados estado, String cidade,
+	public Endereco(Integer id, Estados estado, String cidade, String bairro,
 			String logradouro, String cep, String numero, String complemento) {
 		this.id = id;
 		this.estado = estado;
 		this.cidade = cidade;
+		this.bairro = bairro;
 		this.logradouro = logradouro;
 		this.cep = cep;
 		this.numero = numero;
@@ -66,6 +71,10 @@ public class Endereco {
 
 	public String getCidade() {
 		return cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
 	}
 
 	public String getLogradouro() {
@@ -118,9 +127,9 @@ public class Endereco {
 	@Override
 	public String toString() {
 		return "Endereco [id=" + id + ", user=" + user + ", estado=" + estado
-				+ ", cidade=" + cidade + ", logradouro=" + logradouro
-				+ ", cep=" + cep + ", numero=" + numero + ", complemento="
-				+ complemento + "]";
+				+ ", cidade=" + cidade + ", bairro=" + bairro + ", logradouro="
+				+ logradouro + ", cep=" + cep + ", numero=" + numero
+				+ ", complemento=" + complemento + "]";
 	}
 
 }
