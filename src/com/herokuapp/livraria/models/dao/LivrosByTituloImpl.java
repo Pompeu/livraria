@@ -21,11 +21,15 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 
 	@Override
 	public List<Livro> retriveLivroByTitulo(String titulo) {
+
 		String sql = "select * from livros  where titulo  ilike ? Limit 6";
+
 		List<Livro> livros = new ArrayList<>();
+
 		try {
 			stm = con.prepareStatement(sql);
-			stm.setString(1, "%" + titulo + "%");		
+
+			stm.setString(1, "%" + titulo + "%");
 
 			ResultSet rs = stm.executeQuery();
 
@@ -44,16 +48,16 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 
 	@Override
 	public List<String> getTituloAutoComplete(String input) {
-		
+
 		String sql = "select titulo from livros  where titulo  ilike ? Limit 20";
-		
+
 		List<String> livros = new ArrayList<>();
 
 		try {
 			stm = con.prepareStatement(sql);
-			
+
 			stm.setString(1, "%" + input + "%");
-			
+
 			ResultSet rs = stm.executeQuery();
 
 			while (rs.next()) {

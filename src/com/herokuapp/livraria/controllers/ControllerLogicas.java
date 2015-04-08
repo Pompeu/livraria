@@ -28,7 +28,8 @@ public class ControllerLogicas extends HttpServlet {
 			Logica logica = (Logica) classe.newInstance();
 			String pagina = logica.executa(req, res);
 			res.setCharacterEncoding("UTF-8");
-			req.getRequestDispatcher(pagina).forward(req, res);
+			if(pagina.isEmpty()) return;
+			else req.getRequestDispatcher(pagina).forward(req, res);
 
 		} catch (Exception e) {
 			throw new ServletException(

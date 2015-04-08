@@ -110,10 +110,10 @@ public class GerarBoleto implements Logica {
 		byte[] bPDF = gerador.geraPDF();
 
 		res.setContentType("application/pdf");
-		res.addHeader("Content-Disposition", "attachment; filename=" + bPDF);
+		res.addHeader("Content-Disposition", "attachment; filename="+user.getNome()+"boleto");
 
 		res.setContentLength((int) bPDF.length);
-
+		
 		for (int nChunk = is.read(bPDF); nChunk != -1; nChunk = is.read(bPDF)) {
 			os.write(bPDF, 0, nChunk);
 		}
@@ -121,7 +121,7 @@ public class GerarBoleto implements Logica {
 		os.flush();
 		os.close();
 
-		return "crtl.do?crtl=EstanteCrtl";
+		return "";
 	}
 
 	
