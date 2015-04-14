@@ -14,9 +14,10 @@
 		<c:forEach items="${livros}" var="livro">
 			<div class="main-livro">
 				<input type="hidden" value="${livro.id}>">
-				<h4>${livro.titulo}</h4>
+				<%-- <h4>${livro.titulo}</h4>
 				<span>ISBN é ${livro.isbn} </span>
-				<h5>De ${livro.autor}</h5>
+				<h5>De ${livro.autor}</h5> --%>
+				<img width="200px" height="100px" alt="${livro.titulo}" src="imgs/caio.png">
 				<h3>
 					Preço :
 					<fmt:setLocale value="pt_BR" />

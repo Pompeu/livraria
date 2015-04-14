@@ -31,6 +31,7 @@
 						class="glyphicon glyphicon-book"></i> Cadastrar Livros
 					</a>
 				</c:if></li>
+			<li><a href="<c:url value='/service.do?service=FormImg'/>"> img </a> </li>
 			<li>
 				<div>
 					<form class="navbar-form navbar-right" role="titulo"
