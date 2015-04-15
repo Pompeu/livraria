@@ -52,7 +52,7 @@ public class CarrinhoImpl implements CarrinhoDAO {
 		}
 		return null;
 	}
-
+	
 	@Override
 	public boolean deletarCarrinho(Carrinho carrinho) {
 		String sql = "DELETE FROM CARRINHO WHERE id=?";
