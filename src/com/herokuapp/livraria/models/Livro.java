@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Livro implements Serializable{
+public class Livro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String titulo;
 	private String autor;
@@ -15,12 +15,13 @@ public class Livro implements Serializable{
 	private String isbn;
 	private Integer qtd;
 	private BigDecimal preco;
+	private ImagemBase64 imagem;
 
 	public Livro() {
 	}
 
 	public Livro(Integer id, String titulo, String autor, String category,
-			String isbn, Integer qtd, BigDecimal preco) {
+			String isbn, Integer qtd, BigDecimal preco, ImagemBase64 imagem) {
 		this.titulo = titulo;
 		this.isbn = isbn;
 		this.autor = autor;
@@ -28,16 +29,18 @@ public class Livro implements Serializable{
 		this.id = id;
 		this.qtd = qtd;
 		this.preco = preco;
+		this.setImagem(imagem);
 	}
 
 	public Livro(String titulo, String autor, String category, String isbn,
-			Integer qtd, BigDecimal preco) {
+			Integer qtd, BigDecimal preco, ImagemBase64 imagem) {
 		this.titulo = titulo;
 		this.autor = autor;
 		this.category = category;
 		this.isbn = isbn;
 		this.qtd = qtd;
 		this.preco = preco;
+		this.setImagem(imagem);
 	}
 
 	public void setId(Integer id) {
@@ -74,6 +77,14 @@ public class Livro implements Serializable{
 
 	public void setQtd(Integer qtd) {
 		this.qtd = qtd;
+	}
+
+	public ImagemBase64 getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(ImagemBase64 imagem) {
+		this.imagem = imagem;
 	}
 
 	@Override

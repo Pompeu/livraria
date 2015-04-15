@@ -33,12 +33,12 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 
 			ResultSet rs = stm.executeQuery();
 
-			while (rs.next()) {
+		/*	while (rs.next()) {
 				livros.add(new Livro(rs.getInt("id"), rs.getString("titulo"),
 						rs.getString("autor"), rs.getString("category"), rs
 								.getString("isbn"), rs.getInt("qtd"), rs
 								.getBigDecimal("preco")));
-			}
+			}*/
 
 		} catch (SQLException e) {
 			e.printStackTrace();

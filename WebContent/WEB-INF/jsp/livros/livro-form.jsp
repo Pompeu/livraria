@@ -17,36 +17,47 @@
 							de Livros</h3>
 					</div>
 					<div class="panel-body">
-					<form  class="form-signin" action="<c:url value='/service.do'/>" method="post">
-						<input type="hidden" name="service" value="CriarLivro"> <input
-							type="hidden" name="id" value="${livro.id}">
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon">Titulo </span> <input class="form-control" type="text" name="titulo"
-								value="${livro.titulo}">
-						</div>
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"> Autor</span> <input class="form-control" type="text" name="autor"
-								value="${livro.autor}">
-						</div>
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon">Categoria </span> <input class="form-control" type="text" name="category"
-								value="${livro.category}">
-						</div>
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon">ISBN </span> <input class="form-control" type="text" name="isbn"
-								value="${livro.isbn}">
-						</div>
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon">Quantidade </span> <input class="form-control" type="text" name="qtd"
-								value="${livro.qtd}">
-						</div>
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon">Preço </span> <input class="form-control" type="text" name="preco"
-								value="${livro.preco}">
-						</div>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
+						<form class="form-signin" action="<c:url value='/service.do'/>"
+							method="post" enctype="multipart/form-data">
+							<input type="hidden" name="service" value="CriarLivro"> <input
+								type="hidden" name="id" value="${livro.id}">
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Titulo </span> <input
+									class="form-control" type="text" name="titulo"
+									value="${livro.titulo}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon"> Autor</span> <input
+									class="form-control" type="text" name="autor"
+									value="${livro.autor}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Categoria </span> <input
+									class="form-control" type="text" name="category"
+									value="${livro.category}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">ISBN </span> <input
+									class="form-control" type="text" name="isbn"
+									value="${livro.isbn}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Quantidade </span> <input
+									class="form-control" type="text" name="qtd"
+									value="${livro.qtd}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon">Preço </span> <input
+									class="form-control" type="text" name="preco"
+									value="${livro.preco}">
+							</div>
+							<div style="margin-bottom: 25px" class="input-group">
+								<span class="input-group-addon"> Imagem </span> <input
+									class="form-control" type="file" name="file" size="60" />
+							</div>
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
 
-					</form>
+						</form>
 					</div>
 				</div>
 			</div>

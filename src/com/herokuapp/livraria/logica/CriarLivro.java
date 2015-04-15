@@ -1,5 +1,6 @@
 package com.herokuapp.livraria.logica;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
+import com.herokuapp.livraria.models.ImagemBase64;
 import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
 import com.herokuapp.livraria.models.dao.LivroDAO;
@@ -20,6 +23,7 @@ public class CriarLivro implements Logica {
 
 	public CriarLivro() {
 		livrodao = new LivroImpl(JdbcFactory.getInstance().getConnection());
+
 	}
 
 	@Override
@@ -30,12 +34,21 @@ public class CriarLivro implements Logica {
 
 		List<String> params = new ArrayList<>();
 
-		parameterMap.values().forEach(s -> params.add(s[0]));
+		parameterMap.values().forEach(s -> params.add(s[0]));	
+
+		Part part = req.getPart("file");
+
+		InputStream is = part.getInputStream();
+
+		byte[] buffer = new byte[is.available()];
+		is.read(buffer);
+		is.close();
 
 		try {
 			livro = new Livro(params.get(2), params.get(3), params.get(4),
 					params.get(5), Integer.parseInt(params.get(6)),
-					new BigDecimal(Double.valueOf(params.get(7))));
+					new BigDecimal(Double.valueOf(params.get(7))),
+					new ImagemBase64(buffer));
 
 		} catch (NumberFormatException e) {
 			throw new RuntimeException("Erro no valor " + e);

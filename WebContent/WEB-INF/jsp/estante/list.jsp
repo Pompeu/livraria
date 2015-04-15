@@ -14,15 +14,13 @@
 		<c:forEach items="${livros}" var="livro">
 			<div class="main-livro">
 				<input type="hidden" value="${livro.id}>">
-				<%-- <h4>${livro.titulo}</h4>
-				<span>ISBN é ${livro.isbn} </span>
-				<h5>De ${livro.autor}</h5> --%>
-				<img width="200px" height="100px" alt="${livro.titulo}" src="imgs/caio.png">
-				<h3>
+				<img width="200px" height="100px" alt="${livro.titulo}" src="${livro.imagem}">
+				<h5>${livro.titulo}</h5>
+				<h4>
 					Preço :
 					<fmt:setLocale value="pt_BR" />
 					<fmt:formatNumber value="${livro.preco}" pattern="R$ #,##0.00" />
-				</h3>
+				</h4>
 				<div>
 					<form class="form-inline" action='<c:url value="service.do"/>' method="post">
 							<input type="hidden" name="service" value="AddLivro">

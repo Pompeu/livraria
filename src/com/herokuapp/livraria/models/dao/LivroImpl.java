@@ -5,24 +5,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.herokuapp.livraria.models.ImagemBase64;
 import com.herokuapp.livraria.models.Livro;
 
 public class LivroImpl implements LivroDAO {
 
 	private Connection con;
 	private PreparedStatement stm;
+	private Gson json;
 
 	public LivroImpl(Connection con) {
+		json = new Gson();
 		this.con = con;
 	}
 
 	@Override
 	public Livro create(Livro livro) {
 
-		String sql = "insert into livros(isbn ,titulo , autor , preco ,category, qtd )"
-				+ "values (?, ?, ?, ? , ? , ?)";
+		String sql = "insert into livros(isbn ,titulo , autor , preco ,category, qtd , imagem )"
+				+ "values (?, ?, ?, ? , ? , ? , ?::jsonb)";
 		try {
 			stm = con.prepareStatement(sql,
 					PreparedStatement.RETURN_GENERATED_KEYS);
@@ -33,6 +38,7 @@ public class LivroImpl implements LivroDAO {
 			stm.setBigDecimal(4, livro.getPreco());
 			stm.setString(5, livro.getCategory());
 			stm.setInt(6, livro.getQtd());
+			stm.setString(7, json.toJson(livro.getImagem()));
 
 			stm.execute();
 
@@ -111,7 +117,8 @@ public class LivroImpl implements LivroDAO {
 				livro = new Livro(rs.getInt("id"), rs.getString("titulo"),
 						rs.getString("autor"), rs.getString("category"),
 						rs.getString("isbn"), rs.getInt("qtd"),
-						rs.getBigDecimal("preco"));
+						rs.getBigDecimal("preco"), json.fromJson(
+								rs.getString("imagem"), ImagemBase64.class));
 			}
 			stm.close();
 		} catch (SQLException e) {
@@ -136,12 +143,14 @@ public class LivroImpl implements LivroDAO {
 				livros.add(new Livro(rs.getInt("id"), rs.getString("titulo"),
 						rs.getString("autor"), rs.getString("category"), rs
 								.getString("isbn"), rs.getInt("qtd"), rs
-								.getBigDecimal("preco")));
+								.getBigDecimal("preco"), json.fromJson(
+								rs.getString("imagem"), ImagemBase64.class)));
 			}
 			stm.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		livros.sort((l1 , l2) -> l1.getTitulo().compareTo(l2.getTitulo()));
 		return livros;
 	}
 
@@ -159,7 +168,8 @@ public class LivroImpl implements LivroDAO {
 				livros.add(new Livro(rs.getInt("id"), rs.getString("titulo"),
 						rs.getString("autor"), rs.getString("category"), rs
 								.getString("isbn"), rs.getInt("qtd"), rs
-								.getBigDecimal("preco")));
+								.getBigDecimal("preco"), json.fromJson(
+								rs.getString("imagem"), ImagemBase64.class)));
 			}
 			stm.close();
 		} catch (SQLException e) {
@@ -167,5 +177,4 @@ public class LivroImpl implements LivroDAO {
 		}
 		return livros;
 	}
-
 }
