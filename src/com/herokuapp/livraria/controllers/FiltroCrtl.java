@@ -18,7 +18,7 @@ public class FiltroCrtl implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		long tempoInicial = System.currentTimeMillis();
-
+		response.setCharacterEncoding("UTF-8");
 		chain.doFilter(request, response);
 
 		long tempoFinal = System.currentTimeMillis();

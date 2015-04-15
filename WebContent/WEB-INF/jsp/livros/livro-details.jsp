@@ -15,6 +15,7 @@
 		<h4>${livro.category}</h4>
 		<span>${livro.qtd}</span>
 		<span>${livro.isbn}</span>
+		<img width="200" height="200" alt="${livro.titulo}" src="${livro.imagem}">
     	<div>    		
     		<fmt:setLocale value="pt_BR"/>
     		<fmt:formatNumber value="${livro.preco}" pattern="R$ #,##0.00"/>

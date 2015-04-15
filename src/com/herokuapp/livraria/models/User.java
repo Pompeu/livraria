@@ -3,7 +3,9 @@ package com.herokuapp.livraria.models;
 import java.io.Serializable;
 import java.util.List;
 
-public class User implements Serializable{
+import com.herokuapp.livraria.models.dao.EnderecoImpl;
+
+public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -72,6 +74,10 @@ public class User implements Serializable{
 	}
 
 	public List<Endereco> getEnderecos() {
+		List<Endereco> enderecoByUser = new EnderecoImpl(JdbcFactory
+				.getInstance().getConnection()).getEnderecoByUser(this);
+		if (enderecoByUser.size() != 0)
+			return enderecoByUser;
 		return enderecos;
 	}
 

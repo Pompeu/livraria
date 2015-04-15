@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -57,8 +56,8 @@ public class LivroImpl implements LivroDAO {
 	@Override
 	public Livro update(Livro livro) {
 
-		String sql = "update livros set("
-				+ "isbn=? , titulo=? , autor=? , preco=? ,qtd = ? ,category=?)"
+		String sql = "update livros set "
+				+ "isbn=? , titulo=? , autor=? , preco=? ,qtd = ? ,category=? , imagem=?::jsonb "
 				+ "where id = ?";
 
 		try {
@@ -70,7 +69,8 @@ public class LivroImpl implements LivroDAO {
 			stm.setBigDecimal(4, livro.getPreco());
 			stm.setInt(5, livro.getQtd());
 			stm.setString(6, livro.getCategory());
-			stm.setLong(7, livro.getId());
+			stm.setString(7, json.toJson(livro.getImagem()));
+			stm.setLong(8, livro.getId());
 
 			stm.execute();
 			stm.close();

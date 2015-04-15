@@ -13,8 +13,9 @@
 	<div class="main">
 		<c:forEach items="${livros}" var="livro">
 			<div class="main-livro">
-				<input type="hidden" value="${livro.id}>">
-				<img width="200px" height="100px" alt="${livro.titulo}" src="${livro.imagem}">
+				<input type="hidden" value="${livro.id}>"> <img
+					width="200px" height="100px" alt="${livro.titulo}"
+					src="${livro.imagem}">
 				<h5>${livro.titulo}</h5>
 				<h4>
 					Preço :
@@ -22,25 +23,33 @@
 					<fmt:formatNumber value="${livro.preco}" pattern="R$ #,##0.00" />
 				</h4>
 				<div>
-					<form class="form-inline" action='<c:url value="service.do"/>' method="post">
-							<input type="hidden" name="service" value="AddLivro">
-							<input type="hidden" name="id" value="${livro.id}">
-							<div class="form-group">					
-								<input class="form-control" type="text" value="" name="qtd"  placeholder="Quantidade" required>
-							</div>
+					<form class="form-inline" action='<c:url value="service.do"/>'
+						method="post">
+						<input type="hidden" name="service" value="AddLivro"> <input
+							type="hidden" name="id" value="${livro.id}">
+						<div class="form-group">
+							<input class="form-control" type="text" value="" name="qtd"
+								placeholder="Quantidade" required>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-primary" type="submit">Comprar</button>
+						</div>
+						<c:if test="${sessionScope.usuLogado.nivel eq 'ADMIN'}">
 							<div class="form-group">
-								<button class="btn btn-primary" type="submit"> Comprar</button>
-							</div>					
+								<a
+									href="<c:url value="/service.do?service=FormLivro&id=${livro.id}"/>">Editar</a>
+							</div>
+						</c:if>
 					</form>
 				</div>
 			</div>
 
 		</c:forEach>
 		<c:if test="${fn:length(livros)/6 == 1}">
-		<c:set var="len" scope="session" value="${fn:length(livros)}" />
-		<fmt:parseNumber var="i" pattern="#" value="${len}" />
-		<a href='<c:url value="crtl.do?crtl=EstanteCrtl&pagina=${i}"/>'>
-			Proxima</a>
+			<c:set var="len" scope="session" value="${fn:length(livros)}" />
+			<fmt:parseNumber var="i" pattern="#" value="${len}" />
+			<a href='<c:url value="crtl.do?crtl=EstanteCrtl&pagina=${i}"/>'>
+				Proxima</a>
 		</c:if>
 	</div>
 </body>

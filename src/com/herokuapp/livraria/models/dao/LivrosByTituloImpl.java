@@ -7,15 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.herokuapp.livraria.models.ImagemBase64;
 import com.herokuapp.livraria.models.Livro;
 
 public class LivrosByTituloImpl implements LivroByTituloDAO {
 
 	private Connection con;
 	private PreparedStatement stm;
+	private Gson json;
 
 	public LivrosByTituloImpl(Connection con) {
 		this.con = con;
+		json = new Gson();
 
 	}
 
@@ -33,12 +37,13 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 
 			ResultSet rs = stm.executeQuery();
 
-		/*	while (rs.next()) {
+			while (rs.next()) {
 				livros.add(new Livro(rs.getInt("id"), rs.getString("titulo"),
 						rs.getString("autor"), rs.getString("category"), rs
 								.getString("isbn"), rs.getInt("qtd"), rs
-								.getBigDecimal("preco")));
-			}*/
+								.getBigDecimal("preco"), json.fromJson(
+								rs.getString("imagem"), ImagemBase64.class)));
+			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();

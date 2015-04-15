@@ -18,8 +18,8 @@ public class LogoutCrtl implements Logica {
 			throws Exception {
 
 		session = req.getSession();
-		session.setAttribute("usuLogado", null);
-
+		//session.setAttribute("usuLogado", null);
+		session.invalidate();
 		return "crtl.do?crtl=EstanteCrtl";
 	}
 

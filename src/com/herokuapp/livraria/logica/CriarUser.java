@@ -38,7 +38,7 @@ public class CriarUser implements Logica {
 		user = new User(Nivel.valueOf(params.get(6)), params.get(2),
 				params.get(3), params.get(4), password);
 
-		if (!params.get(1).isEmpty())
+		if (!params.get(1).equals(""))
 			req.setAttribute("user", userdao.update(user));
 		else
 			req.setAttribute("user", userdao.create(user));

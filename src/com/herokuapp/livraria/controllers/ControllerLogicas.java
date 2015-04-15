@@ -26,7 +26,7 @@ public class ControllerLogicas extends HttpServlet {
 
 		String parametro = req.getParameter("service");
 		String className = "com.herokuapp.livraria.logica." + parametro;
-		
+
 		try {
 
 			Class<?> classe = Class.forName(className);
@@ -34,7 +34,7 @@ public class ControllerLogicas extends HttpServlet {
 			String pagina = logica.executa(req, res);
 			res.setCharacterEncoding("UTF-8");
 			if (pagina.isEmpty())
-				return;
+				res.sendRedirect("/WEB-INF/jsp/estante/list.jsp");
 			else
 				req.getRequestDispatcher(pagina).forward(req, res);
 

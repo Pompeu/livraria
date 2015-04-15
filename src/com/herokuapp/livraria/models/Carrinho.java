@@ -12,7 +12,7 @@ public class Carrinho implements Serializable{
 	
 	private Integer id;
 	private BigDecimal total;
-	private int qtd;
+	private int qtdLivros;
 	private User user;
 	private LocalDateTime data;
 	private EstadoCarrinho estadoDoCarrinho;
@@ -60,7 +60,7 @@ public class Carrinho implements Serializable{
 	}
 
 	public int getQtd() {
-		return qtd;
+		return qtdLivros;
 	}
 
 	public User getUser() {
@@ -90,7 +90,7 @@ public class Carrinho implements Serializable{
 	@Override
 	public String toString() {
 		return "Carrinho [livros=" + livros + ", total=" + total + ", qtd="
-				+ qtd + ", user=" + user + ", data=" + data
+				+ qtdLivros + ", user=" + user + ", data=" + data
 				+ ", estadoDoCarrinho=" + estadoDoCarrinho + "]";
 	}
 

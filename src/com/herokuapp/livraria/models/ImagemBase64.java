@@ -1,9 +1,12 @@
 package com.herokuapp.livraria.models;
 
+import java.io.Serializable;
 import java.util.Base64;
 
-public class ImagemBase64 {
+public class ImagemBase64 implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	private String imagem = "data:image/jpeg;base64,";
 
 	public ImagemBase64(byte[] buffer) {

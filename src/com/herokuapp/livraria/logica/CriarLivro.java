@@ -34,7 +34,7 @@ public class CriarLivro implements Logica {
 
 		List<String> params = new ArrayList<>();
 
-		parameterMap.values().forEach(s -> params.add(s[0]));	
+		parameterMap.values().forEach(s -> params.add(s[0]));
 
 		Part part = req.getPart("file");
 
@@ -54,9 +54,12 @@ public class CriarLivro implements Logica {
 			throw new RuntimeException("Erro no valor " + e);
 		}
 
-		if (params.get(1) != null) {
+		if (params.get(1).equals("")) {
 			req.setAttribute("livro", livrodao.create(livro));
 		} else {
+			livro.setId(Integer.valueOf(params.get(1)));
+			livro.setImagem(new ImagemBase64(params.get(8).replaceAll(
+					"data:image/jpeg;base64,", "")));
 			req.setAttribute("livro", livrodao.update(livro));
 		}
 		return "/WEB-INF/jsp/livros/livro-details.jsp";

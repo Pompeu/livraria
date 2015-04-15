@@ -9,20 +9,33 @@
 </head>
 <body>
 	<c:import url="../includes/header.jsp"></c:import>
-	<h1>Dados da Compra</h1>
-	<div>
+	
+	<div class="container">
+		<h1>Dados da Compra</h1>
 		<div>
 			<h2>Dados do Cliente</h2>
-			${sessionScope.usuLogado.nome} ${sessionScope.usuLogado.cpf}
+			<div>Nome : ${sessionScope.usuLogado.nome}</div>
+			<div>CPF : ${sessionScope.usuLogado.cpf} </div>
 		</div>
 		<div>
 			<h3>Endereco para Entregar</h3>
-			${endereco.logradouro} ${endereco.numero} ${endereco.cep}
+			<div> Cidade : ${endereco.cidade}</div>
+			<div> Rua : ${endereco.logradouro}</div> 
+			<div> Numero :${endereco.numero}</div> 
+			<div> Cep : ${endereco.cep}</div>
+		</div>
+		<div>
+			<h3>Total da compra</h3>
+			<div>Valor total : 
+				<fmt:setLocale value="pt_BR" />
+				<fmt:formatNumber value="${sessionScope.carrinho.total}"
+					pattern="R$ #,##0.00" /></div>
 		</div>
 		<div>
 			<a href="<c:url value="service.do?service=GerarBoleto&cep=${endereco.cep}" />">Gerar
 				Boleto</a>
 		</div>
+		
 	</div>
 </body>
 </html>

@@ -52,11 +52,16 @@
 									value="${livro.preco}">
 							</div>
 							<div style="margin-bottom: 25px" class="input-group">
-								<span class="input-group-addon"> Imagem </span> <input
-									class="form-control" type="file" name="file" size="60" />
+								<label for="image" class="input-group-addon"> Imagem </label>
+								<input id="image" class="btn btn-xs btn-primary" type="file" name="file"/>
 							</div>
+							<c:if test="${not empty livro}">
+								<div style="margin: 0px auto" class="input-group">
+									<img width="100px" height="100px" alt="${livro.titulo}" src="${livro.imagem}">
+									<input type="hidden" name="imagem" value="${livro.imagem}">
+								</div>
+							</c:if>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">Salvar</button>
-
 						</form>
 					</div>
 				</div>
