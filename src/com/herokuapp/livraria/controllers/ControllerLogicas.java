@@ -34,7 +34,7 @@ public class ControllerLogicas extends HttpServlet {
 			String pagina = logica.executa(req, res);
 			res.setCharacterEncoding("UTF-8");
 			if (pagina.isEmpty())
-				res.sendRedirect("/WEB-INF/jsp/estante/list.jsp");
+				return;
 			else
 				req.getRequestDispatcher(pagina).forward(req, res);
 

@@ -60,6 +60,7 @@ public class Carrinho implements Serializable{
 	}
 
 	public int getQtd() {
+		qtdLivros = this.livros.size();
 		return qtdLivros;
 	}
 
@@ -83,10 +84,7 @@ public class Carrinho implements Serializable{
 		return new BigDecimal(sum);
 	}
 
-	public int calcQtd() {
-		return this.livros.size();
-	}
-
+	
 	@Override
 	public String toString() {
 		return "Carrinho [livros=" + livros + ", total=" + total + ", qtd="

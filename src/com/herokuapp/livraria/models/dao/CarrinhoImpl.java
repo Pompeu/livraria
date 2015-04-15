@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 import com.herokuapp.livraria.models.Carrinho;
+import com.herokuapp.livraria.models.EstadoCarrinho;
 
 public class CarrinhoImpl implements CarrinhoDAO {
 
@@ -19,7 +20,7 @@ public class CarrinhoImpl implements CarrinhoDAO {
 
 	@Override
 	public Carrinho fecharCarrinho(Carrinho carrinho) {
-		String sql = "insert into carrinho(userId , data , estado , total , qtd)"
+		String sql = "insert into carrinhos(iduser , data , estado , total , qtd)"
 				+ "values (?, ?, ?, ?, ?)";
 		try {
 			stm = con.prepareStatement(sql,
@@ -27,7 +28,7 @@ public class CarrinhoImpl implements CarrinhoDAO {
 
 			stm.setLong(1, carrinho.getUser().getId());
 			stm.setTimestamp(2, Timestamp.valueOf(carrinho.getData()));
-			stm.setString(3, carrinho.getEstadoDoCarrinho().name());
+			stm.setString(3, EstadoCarrinho.ABERTO.name());
 			stm.setBigDecimal(4, carrinho.getTotal());
 			stm.setInt(5, carrinho.getQtd());
 
