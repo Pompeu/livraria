@@ -23,7 +23,11 @@
 			 <span>Editar</span>
 			</a>
 		</div>
-		
+		<div>
+			<h1>Carrinhos de compras</h1>
+			<c:forEach items="carrinhos" var="carrinho">
+			</c:forEach>
+		</div>
 		<div class="container">
 			<a  href="<c:url value='/'/>">
 				<i class="glyphicon  glyphicon-home"></i>
