@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
 import com.herokuapp.livraria.models.ImagemBase64;
@@ -24,16 +26,16 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 	}
 
 	@Override
-	public List<Livro> retriveLivroByTitulo(String titulo) {
+	public List<Livro> retriveLivroByTitulo(String input) {
 
-		String sql = "select * from livros  where titulo  ilike ? Limit 6";
+		String sql = "SELECT *	FROM livros	WHERE to_tsvector(titulo) @@ to_tsquery(?)";
 
 		List<Livro> livros = new ArrayList<>();
 
 		try {
 			stm = con.prepareStatement(sql);
 
-			stm.setString(1, "%" + titulo + "%");
+			stm.setString(1, joinPostgresSqlToVector(input));
 
 			ResultSet rs = stm.executeQuery();
 
@@ -51,12 +53,18 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 		return livros;
 	}
 
+	private String joinPostgresSqlToVector(String input) {
+		return Arrays
+				.asList(input.toLowerCase().replaceAll("^\\d+$", "").split(" "))
+				.stream().collect(Collectors.joining(" & "));
+	}	
+
 	@Override
-	public List<String> getTituloAutoComplete(String input) {
+	public List<?> getTituloAutoComplete(String input) {
 
-		String sql = "select titulo from livros  where titulo  ilike ? Limit 20";
+		String sql = "select titulo from livros  where titulo  ilike ? Limit 5";
 
-		List<String> livros = new ArrayList<>();
+		List<Titulo> livros = new ArrayList<>();
 
 		try {
 			stm = con.prepareStatement(sql);
@@ -66,7 +74,7 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 			ResultSet rs = stm.executeQuery();
 
 			while (rs.next()) {
-				livros.add(rs.getString("titulo"));
+				livros.add(new Titulo(rs.getString("titulo")));
 			}
 
 		} catch (SQLException e) {
@@ -76,4 +84,11 @@ public class LivrosByTituloImpl implements LivroByTituloDAO {
 		return livros;
 	}
 
+	class Titulo {
+		@SuppressWarnings("unused")
+		private String titulo;
+		public Titulo(String titulo) {
+			this.titulo = titulo;
+		}
+	}
 }

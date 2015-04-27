@@ -27,7 +27,7 @@ public class DaoTeste {
 			new GenericDaoFactory(con);
 	private LoginDAO login;
 	
-	@Test
+	
 	public void connectionTest() throws SQLException {
 		
 		List<Livro> all = daoFactory.getAll(Livro.class);
@@ -35,7 +35,6 @@ public class DaoTeste {
 		assertTrue(con != null);
 		assertFalse(con.isClosed());
 	}
-
 	
 	public void loginTest(){
 		login = new LoginImpl(con);

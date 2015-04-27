@@ -8,8 +8,9 @@
 <c:import url="../includes/css.jsp"></c:import>
 <c:import url="../includes/javascripts.jsp"></c:import>
 
-<nav class="role="
-	navigation" class="navbar navbar-default navbar-fixed-top">
+<nav ng-app="app" class="navbar navbar-default" role="
+	navigation"
+	class="navbar navbar-default navbar-fixed-top">
 <div class="container-fluid">
 	<div class="navbar-header">
 		<a class="navbar-brand" href="<c:url value='/'/>"> <i
@@ -32,7 +33,7 @@
 					</a>
 				</c:if></li>
 			<li>
-				<div>
+				<div ng-controller="AutoCompleteCrtl">
 					<form class="navbar-form navbar-right" role="titulo"
 						action='<c:url value="service.do"/>' method="post">
 						<input type="hidden" name="service" value="BuscarLivro">
@@ -40,8 +41,15 @@
 							<label for="titulo"> <i
 								class="glyphicon glyphicon-search"></i>
 							</label> <input class="form-control" id="titulo" type="text"
-								name="titulo">
-							<button type="submit" class="btn btn-success">Buscar Livros</button>
+								name="titulo" ng-keyup="pesquisar(search)" ng-model="search"
+								autofocus autocomplete="off">
+							<div class="autocomplete" ng-show="completing">
+								<a class="link" ng-click="addValueSearch(dica)" ng-repeat="dica in dicas">
+								  <span>{{dica.titulo}}</span> <br />
+								</a>
+							</div>
+							<button type="submit" class="btn btn-success">Buscar
+								Livros</button>
 						</div>
 					</form>
 				</div>
@@ -50,16 +58,14 @@
 					<a href='<c:url value="crtl.do?crtl=CarrinhoCrtl"/>'><i
 						class="glyphicon glyphicon-shopping-cart"></i> Carrinho</a>
 				</c:if></li>
-			<li><c:if test="${not empty sessionScope.usuLogado}">				 
-				 <a href="<c:url value='/service.do?service=UserDetails'/>">				 
-						<i class="glyphicon glyphicon-user"></i>
-						Ola <span>${sessionScope.usuLogado.nome}</span>
-					</a>
-				</c:if>
-			</li>	
 			<li><c:if test="${not empty sessionScope.usuLogado}">
-					<a href="<c:url value='/crtl.do?crtl=LogoutCrtl'/>">
-						<i class="glyphicon glyphicon-off"></i> Sair
+					<a href="<c:url value='/service.do?service=UserDetails'/>"> <i
+						class="glyphicon glyphicon-user"></i> Ola <span>${sessionScope.usuLogado.nome}</span>
+					</a>
+				</c:if></li>
+			<li><c:if test="${not empty sessionScope.usuLogado}">
+					<a href="<c:url value='/crtl.do?crtl=LogoutCrtl'/>"> <i
+						class="glyphicon glyphicon-off"></i> Sair
 					</a>
 				</c:if></li>
 		</ul>

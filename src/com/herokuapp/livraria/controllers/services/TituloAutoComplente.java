@@ -15,7 +15,7 @@ import com.herokuapp.livraria.models.dao.LivrosByTituloImpl;
 @WebServlet("/autocomplettitulo")
 public class TituloAutoComplente implements Api {
 
-		private Gson json;
+	private Gson json;
 	private LivroByTituloDAO livrodao;
 
 	public TituloAutoComplente() {
@@ -27,10 +27,10 @@ public class TituloAutoComplente implements Api {
 	@Override
 	public String response(HttpServletRequest req, HttpServletResponse res)
 			throws IOException {
-		
-		String input = req.getParameter("input");
 
-		List<String> titulos = livrodao.getTituloAutoComplete(input);
+		String input = req.getParameter("q");		
+		
+		List<?> titulos = livrodao.getTituloAutoComplete(input);
 
 		if (input != null && input.matches("^[a-zA-Z -]*[A-Za-z]$")) {
 			return json.toJson(titulos);

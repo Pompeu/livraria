@@ -33,7 +33,7 @@ public class LivrosByTituloTest {
 	public void getTituloForAutoComplete() {
 		String input = "n";
 
-		List<String> tituloAutoComplete = livrodao.getTituloAutoComplete(input);
+		List<?> tituloAutoComplete = livrodao.getTituloAutoComplete(input);
 
 		assertTrue(tituloAutoComplete != null);
 		assertTrue(tituloAutoComplete.size() > 0);

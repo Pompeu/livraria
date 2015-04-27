@@ -41,7 +41,8 @@ public class AdminFilter implements Filter {
 				|| parameter.equals("FormRecPassword")
 				|| parameter.equals("FormUser")
 				|| parameter.equals("UserDetails")
-				|| parameter.equals("AddLivro") || user != null
+				|| parameter.equals("AddLivro")
+				|| parameter.equals("BuscarLivro")|| user != null
 				&& user.getNivel().matches("ADMIN")) {
 			chain.doFilter(request, response);
 		} else {

@@ -45,6 +45,7 @@ public class CarrinhoImpl implements CarrinhoDAO {
 					.start();
 			
 			stm.close();
+			
 			return carrinho;
 	
 		} catch (SQLException e) {
@@ -64,7 +65,7 @@ public class CarrinhoImpl implements CarrinhoDAO {
 			stm.execute();
 
 			stm.close();
-
+	
 			return true;
 
 		} catch (SQLException e) {
@@ -85,10 +86,12 @@ public class CarrinhoImpl implements CarrinhoDAO {
 
 			stm.execute();
 			stm.close();
-
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 	}
+
+		
 }

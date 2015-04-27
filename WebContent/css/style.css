@@ -22,3 +22,12 @@
 	width: 650px;
 	margin: 20px;
 }
+
+.autocomplete {
+	position: absolute;
+}
+
+.autocomplete>a>span {
+	color: black;
+	text-align: justify;
+}

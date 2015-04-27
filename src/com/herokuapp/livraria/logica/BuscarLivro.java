@@ -30,7 +30,7 @@ public class BuscarLivro implements Logica {
 			throws Exception {
 
 		String titulo = req.getParameter("titulo");
-		if (titulo.matches("^[a-zA-Z ]+$")) {
+		if (titulo.matches("^[a-zA-Z1-9 ]+$")) {
 			List<Livro> retriveLivroByTitulo = livrotitulodao
 					.retriveLivroByTitulo(titulo);
 			if (retriveLivroByTitulo.size() > 0) {

@@ -9,3 +9,5 @@
 
 <link rel="stylesheet" type="text/css"
 	href="<c:url value='bower_components/bootstrap/dist/css/bootstrap-theme.min.css'/>">
+<link rel="stylesheet" type="text/css"
+	href="<c:url value='bower_components/jquery-ui/themes/base/autocomplete.css'/>">	

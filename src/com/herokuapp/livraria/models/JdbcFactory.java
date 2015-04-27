@@ -40,4 +40,9 @@ public class JdbcFactory {
 			e.printStackTrace();
 		}
 	}
+	@Override
+	protected void finalize() throws Throwable {
+		System.out.println("Fechou");
+		disconnect();
+	}
 }
