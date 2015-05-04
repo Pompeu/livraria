@@ -13,8 +13,8 @@
 	<div class="main">
 		<c:forEach items="${livros}" var="livro">
 			<div class="main-livro">
-				<input type="hidden" value="${livro.id}>"> <img
-					width="200px" height="100px" alt="${livro.titulo}"
+				<input type="hidden" value="${livro.id}>"> <img class="img-book"
+					width="100px" height="80px" alt="${livro.titulo}"
 					src="${livro.imagem}">
 				<h5>${livro.titulo}</h5>
 				<h4>

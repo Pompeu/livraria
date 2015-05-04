@@ -17,6 +17,9 @@
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 2px solid #000000;
 }
+.img-book {
+	padding-bottom: 10px;
+}
 
 .bs-example {
 	width: 650px;
