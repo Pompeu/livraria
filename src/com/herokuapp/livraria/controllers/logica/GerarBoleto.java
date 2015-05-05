@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.logica;
+package com.herokuapp.livraria.controllers.logica;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logica.Logica;
 import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.LoginDAO;
 import com.herokuapp.livraria.models.dao.LoginImpl;
@@ -32,7 +32,7 @@ public class RecPasswordCrtl implements Logica {
 						BCrypt.hashpw(newpass, BCrypt.gensalt(12))) != null) {
 			req.setAttribute("newpass", newpass);
 		} else {
-			req.setAttribute("result", "email não encontrado");
+			req.setAttribute("result", "email nï¿½o encontrado");
 		}
 
 		return "/WEB-INF/jsp/logar/rec-password-form.jsp";

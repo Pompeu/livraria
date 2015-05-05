@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.logica;
+package com.herokuapp.livraria.controllers.logica;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.controllers;
+package com.herokuapp.livraria.controllers.filtros;
 
 import java.io.IOException;
 
@@ -25,8 +25,6 @@ public class AdminFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-
-		String url = httpServletRequest.getRequestURI();
 		String parameter = httpServletRequest.getParameter("service");
 		HttpSession sessao = httpServletRequest.getSession();
 		User user = (User) sessao.getAttribute("usuLogado");

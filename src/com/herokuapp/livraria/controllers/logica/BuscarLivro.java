@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.logica;
+package com.herokuapp.livraria.controllers.logica;
 
 import java.sql.Connection;
 import java.util.List;

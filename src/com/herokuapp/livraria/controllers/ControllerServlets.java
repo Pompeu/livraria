@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logica.Logica;
 
 @WebServlet("/crtl.do")
 public class ControllerServlets extends HttpServlet {
@@ -37,7 +37,7 @@ public class ControllerServlets extends HttpServlet {
 
 		} catch (Exception e) {
 			throw new ServletException(
-					"O Controller de negócios causou uma exceção", e);
+					"O Controller de negï¿½cios causou uma exceï¿½ï¿½o", e);
 		}
 
 	}

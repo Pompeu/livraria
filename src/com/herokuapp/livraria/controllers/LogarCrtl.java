@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logica.Logica;
 import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.User;
 import com.herokuapp.livraria.models.dao.LoginDAO;

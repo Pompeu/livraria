@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logica.Logica;
 
 public class LogoutCrtl implements Logica {
 

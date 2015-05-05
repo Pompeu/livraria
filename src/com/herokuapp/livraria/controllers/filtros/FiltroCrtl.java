@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.controllers;
+package com.herokuapp.livraria.controllers.filtros;
 
 import java.io.IOException;
 
