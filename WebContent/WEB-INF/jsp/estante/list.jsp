@@ -13,8 +13,8 @@
 	<div class="main">
 		<c:forEach items="${livros}" var="livro">
 			<div class="main-livro">
-				<input type="hidden" value="${livro.id}>"> <img class="img-book"
-					width="100px" height="80px" alt="${livro.titulo}"
+				<input type="hidden" value="${livro.id}>"> <img
+					class="img-book" width="100px" height="80px" alt="${livro.titulo}"
 					src="${livro.imagem}">
 				<h5>${livro.titulo}</h5>
 				<h4>
@@ -45,12 +45,12 @@
 			</div>
 
 		</c:forEach>
+
 		<c:if test="${fn:length(livros)/6 == 1}">
-			<c:set var="len" scope="session" value="${fn:length(livros)}" />
-			<fmt:parseNumber var="i" pattern="#" value="${len}" />
-			<a href='<c:url value="crtl.do?crtl=EstanteCrtl&offset=${i}"/>'>
+			<a href='<c:url value="crtl.do?crtl=EstanteCrtl&pagina=${pagina}"/>'>
 				Proxima</a>
 		</c:if>
+
 	</div>
 </body>
 </html>

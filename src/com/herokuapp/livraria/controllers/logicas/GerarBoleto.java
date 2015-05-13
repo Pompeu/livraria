@@ -120,7 +120,7 @@ public class GerarBoleto implements Logica {
 		for (int nChunk = is.read(bPDF); nChunk != -1; nChunk = is.read(bPDF)) {
 			os.write(bPDF, 0, nChunk);
 		}
-
+		
 		os.flush();
 		os.close();
 	}

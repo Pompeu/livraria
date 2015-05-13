@@ -19,12 +19,16 @@ public class EstanteCrtl implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		
-		String offset = req.getParameter("offset");
-		
+
+		String offset = req.getParameter("pagina");
+
 		if (offset != null) {
+
 			req.setAttribute("livros",
 					livrodao.retriveAll(Integer.valueOf(offset)));
+
+			req.setAttribute("pagina", Integer.valueOf(offset) + 6);
+
 		} else {
 			req.setAttribute("livros", livrodao.retriveAll());
 		}
