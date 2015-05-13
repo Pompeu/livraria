@@ -33,16 +33,19 @@ public class CriarUser implements Logica {
 		List<String> params = new ArrayList<>();
 
 		parameterMap.values().forEach(s -> params.add(s[0]));
-		String password = BCrypt.hashpw(params.get(5), BCrypt.gensalt(12));
+		
 	
-		user = new User(Nivel.valueOf(params.get(6)), params.get(2),
-				params.get(3), params.get(4), password);
-
-		if (!params.get(1).equals(""))
+		if (!params.get(1).equals("")){
+			user = new User(params.get(2),
+					params.get(3), params.get(4));
+			user.setId(Integer.valueOf(params.get(1)));
 			req.setAttribute("user", userdao.update(user));
-		else
+		}else{
+			String password = BCrypt.hashpw(params.get(5), BCrypt.gensalt(12));
+			user = new User(Nivel.valueOf(params.get(6)), params.get(2),
+					params.get(3), params.get(4), password);
 			req.setAttribute("user", userdao.create(user));
-
+		}
 		return "/WEB-INF/jsp/users/users-details.jsp";
 	}
 

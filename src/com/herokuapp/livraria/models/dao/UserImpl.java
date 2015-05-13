@@ -53,17 +53,15 @@ public class UserImpl implements DAO<User> {
 	@Override
 	public User update(User user) {
 
-		String sql = "update users set(nome=? , cpf=? , email=? , password=? ,nivel=?)"
-				+ "where id = ?";
+		String sql = "update users set nome=? , cpf=? , email=? "
+				+ "where id=?";
 
 		try {
 			stm = con.prepareStatement(sql);
 			stm.setString(1, user.getNome());
 			stm.setString(2, user.getCpf());
 			stm.setString(3, user.getEmail());
-			stm.setString(4, user.getPassword());
-			stm.setString(5, user.getNivel());
-			stm.setLong(6, user.getId());
+			stm.setLong(4, user.getId());
 
 			stm.execute();
 			stm.close();
