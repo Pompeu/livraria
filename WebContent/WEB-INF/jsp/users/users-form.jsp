@@ -42,20 +42,22 @@
 								</span> <input name="email" class="form-control" type="email"
 									value="${user.email}" required="" placeholder="Digite o Email">
 							</div>
-							<div style="margin-bottom: 25px" class="input-group">
-								<span class="input-group-addon"> <i
-									class="glyphicon glyphicon-lock"></i>
-								</span> <input name="password" class="form-control" type="password"
-									value="${user.password}" required="" placeholder="Digite a Senha">
-							</div>
-							<div style="margin-bottom: 25px" class="input-group">
-								<c:if test="${sessionScope.usuLogado.nivel eq 'ADMIN'}">
-									<label for="admin">ADMIN</label>
-									<input id="admin" type="radio" name="nivel" value="ADMIN">
-								</c:if>
-								<label for="cliente">CLIENTE</label> <input id="cliente"
-									type="radio" name="nivel" value="CLIENTE">
-							</div>
+							<c:if test="${sessionScope.usuLogado == null}">
+								<div style="margin-bottom: 25px" class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-lock"></i>
+									</span> <input name="password" class="form-control" type="password"
+										value="${user.password}" required="" placeholder="Digite a Senha">
+								</div>
+								<div style="margin-bottom: 25px" class="input-group">
+									<c:if test="${sessionScope.usuLogado.nivel eq 'ADMIN'}">
+										<label for="admin">ADMIN</label>
+										<input id="admin" type="radio" name="nivel" value="ADMIN">
+									</c:if>
+									<label for="cliente">CLIENTE</label> <input id="cliente"
+										type="radio" name="nivel" value="CLIENTE">
+								</div>
+							</c:if>
 							<button class="btn btn-lg btn-primary btn-block" type="submit">
 								Salvar</button>
 							<c:if test="${requestScope.result != null}">
