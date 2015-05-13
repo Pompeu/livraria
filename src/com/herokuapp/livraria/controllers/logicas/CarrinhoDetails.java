@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.logica;
+package com.herokuapp.livraria.controllers.logicas;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

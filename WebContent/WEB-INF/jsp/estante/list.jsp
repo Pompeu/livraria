@@ -48,7 +48,7 @@
 		<c:if test="${fn:length(livros)/6 == 1}">
 			<c:set var="len" scope="session" value="${fn:length(livros)}" />
 			<fmt:parseNumber var="i" pattern="#" value="${len}" />
-			<a href='<c:url value="crtl.do?crtl=EstanteCrtl&pagina=${i}"/>'>
+			<a href='<c:url value="crtl.do?crtl=EstanteCrtl&offset=${i}"/>'>
 				Proxima</a>
 		</c:if>
 	</div>

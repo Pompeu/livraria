@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logicas.Logica;
 import com.herokuapp.livraria.models.Carrinho;
 import com.herokuapp.livraria.models.EstadoCarrinho;
 import com.herokuapp.livraria.models.JdbcFactory;

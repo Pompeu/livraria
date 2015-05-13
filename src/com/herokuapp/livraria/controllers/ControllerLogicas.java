@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logicas.Logica;
 
 @WebServlet("/service.do")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
@@ -25,7 +25,7 @@ public class ControllerLogicas extends HttpServlet {
 			throws ServletException, IOException {
 
 		String parametro = req.getParameter("service");
-		String className = "com.herokuapp.livraria.logica." + parametro;
+		String className = "com.herokuapp.livraria.controllers.logicas." + parametro;
 
 		try {
 

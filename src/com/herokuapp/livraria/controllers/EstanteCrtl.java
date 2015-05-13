@@ -3,7 +3,7 @@ package com.herokuapp.livraria.controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.herokuapp.livraria.logica.Logica;
+import com.herokuapp.livraria.controllers.logicas.Logica;
 import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.LivroDAO;
 import com.herokuapp.livraria.models.dao.LivroImpl;
@@ -19,11 +19,12 @@ public class EstanteCrtl implements Logica {
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		String parameter = req.getParameter("pagina");
-
-		if (parameter != null) {
+		
+		String offset = req.getParameter("offset");
+		
+		if (offset != null) {
 			req.setAttribute("livros",
-					livrodao.retriveAll(Integer.valueOf(parameter)));
+					livrodao.retriveAll(Integer.valueOf(offset)));
 		} else {
 			req.setAttribute("livros", livrodao.retriveAll());
 		}

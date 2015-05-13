@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.logica;
+package com.herokuapp.livraria.controllers.logicas;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
