@@ -45,11 +45,10 @@
 			</div>
 
 		</c:forEach>
-
-		<c:if test="${fn:length(livros)/6 == 1}">
-			<a href='<c:url value="crtl.do?crtl=EstanteCrtl&pagina=${pagina}"/>'>
+		
+		<a href='<c:url value="crtl.do?crtl=EstanteCrtl&pagina=${pagina}"/>'>
 				Proxima</a>
-		</c:if>
+		
 
 	</div>
 </body>

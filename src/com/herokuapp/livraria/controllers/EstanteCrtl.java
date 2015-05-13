@@ -20,13 +20,12 @@ public class EstanteCrtl implements Logica {
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 
-		String offset = req.getParameter("pagina");
+		String offset = req.getParameter("pagina") == null ? String
+				.valueOf(0) : req.getParameter("pagina");
 
 		if (offset != null) {
-
 			req.setAttribute("livros",
 					livrodao.retriveAll(Integer.valueOf(offset)));
-
 			req.setAttribute("pagina", Integer.valueOf(offset) + 6);
 
 		} else {
