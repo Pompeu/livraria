@@ -3,10 +3,10 @@ package com.herokuapp.livraria.controllers.logicas;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.User;
 import com.herokuapp.livraria.models.dao.DAO;
 import com.herokuapp.livraria.models.dao.UserImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class DeletarUser implements Logica {
 	private DAO<User> userdao;

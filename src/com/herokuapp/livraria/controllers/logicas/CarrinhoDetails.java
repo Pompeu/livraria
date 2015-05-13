@@ -3,9 +3,9 @@ package com.herokuapp.livraria.controllers.logicas;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.EnderecoImpl;
 import com.herokuapp.livraria.models.dao.EndrecoDAO;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class CarrinhoDetails implements Logica {
 

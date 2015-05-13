@@ -7,10 +7,10 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
 import com.herokuapp.livraria.models.dao.LivroByTituloDAO;
 import com.herokuapp.livraria.models.dao.LivrosByTituloImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class LivrosByTituloTest {
 	private LivroByTituloDAO livrodao;

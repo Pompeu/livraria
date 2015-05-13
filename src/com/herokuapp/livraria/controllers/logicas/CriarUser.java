@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.mindrot.jbcrypt.BCrypt;
 
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Nivel;
 import com.herokuapp.livraria.models.User;
 import com.herokuapp.livraria.models.dao.DAO;
 import com.herokuapp.livraria.models.dao.UserImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class CriarUser implements Logica {
 

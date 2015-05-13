@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
 import com.herokuapp.livraria.models.dao.LivroDAO;
 import com.herokuapp.livraria.models.dao.LivroImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class AddLivro implements Logica {
 

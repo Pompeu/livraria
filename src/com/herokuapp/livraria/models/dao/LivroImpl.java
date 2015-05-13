@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.herokuapp.livraria.models.ImagemBase64;
 import com.herokuapp.livraria.models.Livro;
+import com.herokuapp.livraria.uteis.ImagemBase64;
 
 public class LivroImpl implements LivroDAO {
 

@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.models;
+package com.herokuapp.livraria.uteis;
 
 import java.io.Serializable;
 import java.util.Base64;

@@ -10,12 +10,12 @@ import org.junit.Test;
 
 import com.herokuapp.livraria.models.Endereco;
 import com.herokuapp.livraria.models.Estados;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.User;
 import com.herokuapp.livraria.models.dao.DAO;
 import com.herokuapp.livraria.models.dao.EnderecoImpl;
 import com.herokuapp.livraria.models.dao.EndrecoDAO;
 import com.herokuapp.livraria.models.dao.UserImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class EndrecoDAOTeste {
 

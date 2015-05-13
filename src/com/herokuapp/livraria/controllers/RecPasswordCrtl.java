@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.herokuapp.livraria.controllers.logicas.Logica;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.LoginDAO;
 import com.herokuapp.livraria.models.dao.LoginImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class RecPasswordCrtl implements Logica {
 

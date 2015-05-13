@@ -21,9 +21,9 @@ import br.com.caelum.stella.boleto.bancos.BancoDoBrasil;
 import br.com.caelum.stella.boleto.transformer.GeradorDeBoleto;
 
 import com.herokuapp.livraria.models.Carrinho;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.CarrinhoDAO;
 import com.herokuapp.livraria.models.dao.CarrinhoImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class GerarBoleto implements Logica {
 

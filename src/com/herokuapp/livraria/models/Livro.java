@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import com.herokuapp.livraria.uteis.ImagemBase64;
+
 public class Livro implements Serializable {
 
 	private static final long serialVersionUID = 1L;

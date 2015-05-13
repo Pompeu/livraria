@@ -10,11 +10,11 @@ import javax.servlet.http.HttpSession;
 import com.herokuapp.livraria.controllers.logicas.Logica;
 import com.herokuapp.livraria.models.Carrinho;
 import com.herokuapp.livraria.models.EstadoCarrinho;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.Livro;
 import com.herokuapp.livraria.models.User;
 import com.herokuapp.livraria.models.dao.EnderecoImpl;
 import com.herokuapp.livraria.models.dao.EndrecoDAO;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class CarrinhoCrtl implements Logica {
 

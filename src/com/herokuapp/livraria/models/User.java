@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.herokuapp.livraria.models.dao.EnderecoImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class User implements Serializable {
 

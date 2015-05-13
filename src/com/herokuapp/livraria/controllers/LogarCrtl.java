@@ -7,10 +7,10 @@ import javax.servlet.http.HttpSession;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.herokuapp.livraria.controllers.logicas.Logica;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.User;
 import com.herokuapp.livraria.models.dao.LoginDAO;
 import com.herokuapp.livraria.models.dao.LoginImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class LogarCrtl implements Logica {
 	private HttpSession session;

@@ -5,9 +5,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.herokuapp.livraria.models.Carrinho;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.CarrinhoDAO;
 import com.herokuapp.livraria.models.dao.CarrinhoImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 public class FinalizaCompra implements Logica {
 

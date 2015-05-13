@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.herokuapp.livraria.models.JdbcFactory;
 import com.herokuapp.livraria.models.dao.LivroByTituloDAO;
 import com.herokuapp.livraria.models.dao.LivrosByTituloImpl;
+import com.herokuapp.livraria.uteis.JdbcFactory;
 
 @WebServlet("/autocomplettitulo")
 public class TituloAutoComplente implements Api {
