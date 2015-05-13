@@ -10,7 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import com.herokuapp.livraria.models.Console;
+
+import com.herokuapp.livraria.uteis.Console;
 
 @WebFilter("/*")
 public class FiltroCrtl implements Filter {

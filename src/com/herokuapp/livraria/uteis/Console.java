@@ -1,4 +1,4 @@
-package com.herokuapp.livraria.models;
+package com.herokuapp.livraria.uteis;
 
 public class Console {
 
