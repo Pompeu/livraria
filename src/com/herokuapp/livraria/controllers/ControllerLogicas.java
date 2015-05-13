@@ -25,7 +25,9 @@ public class ControllerLogicas extends HttpServlet {
 			throws ServletException, IOException {
 
 		String parametro = req.getParameter("service");
+	
 		String className = "com.herokuapp.livraria.controllers.logicas." + parametro;
+
 
 		try {
 
@@ -40,7 +42,7 @@ public class ControllerLogicas extends HttpServlet {
 
 		} catch (Exception e) {
 			throw new ServletException(
-					"A lógica de negócios causou uma exceção", e);
+					"A lÃ³gica de negÃ³cios causou uma exceÃ§Ã£o", e);
 		}
 
 	}

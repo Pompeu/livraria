@@ -37,7 +37,7 @@ public class ControllerServlets extends HttpServlet {
 
 		} catch (Exception e) {
 			throw new ServletException(
-					"O Controller de negócios causou uma exceção", e);
+					"O Controller de negï¿½cios causou uma exceï¿½ï¿½o", e);
 		}
 
 	}

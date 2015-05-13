@@ -20,7 +20,7 @@ public class LogarCrtl implements Logica {
 	public LogarCrtl() {
 		logindao = new LoginImpl(JdbcFactory.getInstance().getConnection());
 	}
-
+	
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
